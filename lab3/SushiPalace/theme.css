@@ -1,8 +1,45 @@
+body {
+	margin: 0%;
+}
+
 h1 {
-    text-align: center; color: gold; fontsize: 36px;
+  text-align: center; color: yellow; font-size: 3em;
 }
 
-a:link a:visited {
-    text-decoration: none;
+table.compartments { 
+  width: 100%;
+  border: 1px;
 }
 
+table, td, th { 
+  padding: 1em;
+}
+
+#palace { 
+  background: linear-gradient(to right, pink, salmon, orchid);
+}
+
+#nav { 
+  width: 10em;
+  background: linear-gradient(to right, pink, salmon);
+}
+
+#data { 
+  background: linear-gradient(to right, salmon, orchid);
+}
+
+#map { 
+  vertical-align: text-top;
+}
+
+a{ 
+  line-height: 2em;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+}
+
+a:hover { 
+  text-decoration: underline;
+}
