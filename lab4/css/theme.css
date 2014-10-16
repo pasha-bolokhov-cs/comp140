@@ -1,0 +1,98 @@
+/*
+ * theme.css - Pavel A. Bolokhov
+ */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+
+h1 {
+  text-align: center; color: yellow; font-size: 3em;
+  margin: 0;
+  font-family: "Times New Roman", serif, inherit;
+  font-weight: bold;
+}
+
+#palace { 
+  background: linear-gradient(to right, pink, salmon, orchid);
+  background: -webkit-linear-gradient(left, pink, salmon, orchid); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, pink, salmon, orchid); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, pink, salmon, orchid); /* For Firefox 3.6 to 15 */
+  filter: progid:DXImageTransform.Microsoft.gradient( 
+	startColorstr='pink', endColorstr='salmon',GradientType=0 );
+  padding: 0.5em;
+}
+
+#hours {
+  font-weight: 600;
+}
+
+.nav { 
+  text-align: center;
+  width: 100%;
+  list-style-type: none;
+  background: linear-gradient(to right, pink, salmon);
+}
+
+.navbar {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  width: 100%;
+}
+
+.ngview {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+#data { 
+  border: 0;
+  margin-top: 0;
+  padding: 3em;
+  width: 100%;
+  background: linear-gradient(to right, salmon, orchid);
+}
+
+#map { 
+  vertical-align: text-top;
+}
+
+a{ 
+  line-height: 2em;
+}
+
+.nav ul {
+  display: inline-block;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0;
+}
+
+.nav li {
+  display: inline-block;
+  width: 19%;
+  text-align: center;
+}
+
+.nav li a:visited {
+  color: blue;
+}
+
+.nav li a:link {
+  text-decoration: none;
+}
+
+.nav>li>a:hover { 
+  background-color: initial;
+  text-decoration: underline;
+}
