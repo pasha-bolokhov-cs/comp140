@@ -152,6 +152,25 @@ a {
 
 .orderform {
   font-size: 12pt;
-  width: 40em;
+  font-weight: normal;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
+.rightinput {
+  margin: 1em;
+}
+
+.monthinput {
+  margin: 1em 0.5em 1em 1em;
+}
+
+.yearinput {
+  margin: 1em 1em 1em 0.5em;
+}
+
+label {
+  font-weight: normal;
+  margin: 0 2em 0 0;
+}
