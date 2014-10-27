@@ -1,57 +1,83 @@
 <div class="container" id="data">
-  <fieldset style="margin: 0; padding: 0;">
-    <legend>Place Your Order</legend>
-    <form class="orderform">
-      <div style="float: left; width: 40%; margin-bottom: 2em";>
-        <input type="text" name="firstname" class="rightinput" placeholder="Your First Name">
-        <br/>
-        <input type="text" name="lastname" class="rightinput" placeholder="Last Name">
-        <br/>
-        <input type="tel" name="phone" class="rightinput" pattern="\+?[\d-]*\d"
-               placeholder="Phone number" required>
-        <br/>
-        <input type="text" name="credit" class="rightinput" pattern="[\d-]+"
-               placeholder="Credit Card">
-        <br/>
-        <input type="text" name="expirym" class="monthinput"
-               size="2" maxlength="2" placeholder="MM" pattern="\d\d?" title="Expiry Month">/
-        <input type="text" name="expiryy" class="yearinput"
-               size="2" maxlength="2" placeholder="YY" pattern="\d\d?" title="Expiry Year">
-      </div>
-      <fieldset style="float: right; width: 60%; margin-bottom: 2em;">
-        <legend>Select Package</legend>
-        <select name="package" id="package">
-          <option value="six">six-pack</option>
-          <option value="eight">eight-pack</option>
-          <option value="ten">ten-pack</option>
-        </select>
-	<br/>
-	<br/>
-	<legend>Select a spice</legend>
-        <input type="checkbox" name="spice[]" value="soy" id="soy">
-	<label for="soy">Soy Sauce</label>
-        <input type="checkbox" name="spice[]" value="ginger" id="ginger">
-	<label for="ginger">Ginger</label>
-        <input type="checkbox" name="spice[]" value="wasabi" id="wasabi">
-	<label for="wasabi">Wasabi</label>
-        <input type="checkbox" name="spice[]" value="hot" id="hot">
-	<label for="hot">Hot Sauce</label>
-        <input type="checkbox" name="spice[]" value="mayo" id="mayo">
-	<label for="mayo">Spicy Mayo</label>
-      </fieldset>
-      <fieldset style="float: right; width: 50%;">
-      <fieldset style="clear: both; width: 100%;">
-        <legend>Flavour of Sushi</legend>
-        <input type="radio" name="sushi" value="california" id="california">
-        <label for="california">California Roll</label>
-        <input type="radio" name="sushi" value="salmon" id="salmon">
-        <label for="salmon">Spicy Salmon Roll</label>
-        <input type="radio" name="sushi" value="calamari" id="calamari">
-        <label for="salmon">Calamari Roll</label>
-      </fieldset>
-      <br/>
-      <br/>
-    </form>
-  <fieldset>
+
+    <fieldset style="margin: 0; padding: 0;">
+
+        <legend>Place Your Order</legend>
+        <form class="orderform">
+
+            <!-- Order details -->
+            <div "float: left; width: 60%;">
+                <fieldset style="margin-top: 1em; width: 60%; float: left;">
+                    <legend>Select Serving</legend>
+                    <select name="serving" id="serving">
+                        <option value="six">six-pack</option>
+                        <option value="eight">eight-pack</option>
+                        <option value="ten">ten-pack</option>
+                    </select>
+                </fieldset>
+
+
+                <fieldset style="width: 60%; float: left;">
+                    <legend>Select a spice</legend>
+                    <input type="checkbox" name="spice[]" value="soy" id="soy">
+                    <label for="soy">Soy Sauce</label>
+                    <input type="checkbox" name="spice[]" value="ginger" id="ginger">
+                    <label for="ginger">Ginger</label>
+                    <input type="checkbox" name="spice[]" value="wasabi" id="wasabi">
+                    <label for="wasabi">Wasabi</label>
+                    <input type="checkbox" name="spice[]" value="hot" id="hot">
+                    <label for="hot">Hot Sauce</label>
+                    <input type="checkbox" name="spice[]" value="mayo" id="mayo">
+                    <label for="mayo">Spicy Mayo</label>
+                </fieldset>
+
+
+                <fieldset style="width: 60%; float: left;">
+                    <legend>Flavour of Sushi</legend>
+                    <input type="radio" name="sushi" value="california" id="california">
+                    <label for="california">California Roll</label>
+                    <input type="radio" name="sushi" value="salmon" id="salmon">
+                    <label for="salmon">Spicy Salmon Roll</label>
+                    <input type="radio" name="sushi" value="calamari" id="calamari">
+                    <label for="salmon">Calamari Roll</label>
+                </fieldset>
+
+
+                <fieldset style="width: 60%; float: left;">
+                    <legend>Quantity</legend>
+                    <input type="number" id="quantity" name="quantity" value="1" min="1" max="20" required>
+                </fieldset>
+
+
+                <fieldset style="width: 60%; float: left;">
+                    <legend>Select order type</legend>
+                    <input type="radio" name="order" value="pickup" id="pickup">
+                    <label>Pick up</label>
+                    <input type="radio" name="order" value="delivery" id="delivery">
+                    <label>Delivery</label>
+                </fieldset>
+            </div>
+
+            <!-- Credit Card information -->
+            <div style="float: right; width: 40%;">
+                <input type="text" name="firstname" class="rightinput" placeholder="Your First Name">
+                <br/>
+                <input type="text" name="lastname" class="rightinput" placeholder="Last Name">
+                <br/>
+                <input type="tel" name="phone" class="rightinput" pattern="\+?[\d-]*\d"
+                       placeholder="Phone number" required>
+                <br/>
+                <input type="text" name="credit" class="rightinput" pattern="[\d-]+"
+                       placeholder="Credit Card">
+                <br/>
+                <input type="text" name="expirym" class="monthinput"
+                       size="2" maxlength="2" placeholder="MM" pattern="\d\d?" title="Expiry Month">/
+                <input type="text" name="expiryy" class="yearinput"
+                       size="2" maxlength="2" placeholder="YY" pattern="\d\d?" title="Expiry Year">
+            </div>
+
+
+        </form>
+    <fieldset>
 </div>
 
