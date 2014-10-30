@@ -1,0 +1,182 @@
+<div id="data">
+
+        <form class="orderform" action="php/submit.php" 
+	      ng-app="" ng-controller="costController">
+
+	  <div class="container-fluid">
+
+            <div class="row">
+            <!-- Order details -->
+                <div class="col-xs-12 col-md-8">
+	        
+                  <fieldset>
+                      <legend>Select Serving</legend>
+		      <div class="row">
+			<div class="col-xs-5 col-md-4">
+			  <select name="serving" id="serving" class="form-control" ng-model="serving">
+                            <option value="six" selected=selected>six-pack</option>
+                            <option value="eight">eight-pack</option>
+                            <option value="ten">ten-pack</option>
+			  </select>
+			</div>
+		      </div>
+                  </fieldset>
+	          <br/>
+	        
+                  <fieldset>
+                      <legend>Select a spice</legend>
+		      <div class="row">
+			<div class="col-xs-12 col-md-4">
+			  <div class="checkbox">
+                            <label for="soy">
+                              <input type="checkbox" name="spice[]" value="soy" id="soy">
+			      Soy Sauce
+			    </label>
+                          </div>
+			</div>
+			<div class="col-xs-12 col-md-4">
+			  <div class="checkbox">
+                            <label for="ginger">
+                              <input type="checkbox" name="spice[]" value="ginger" id="ginger">
+			      Ginger
+			    </label>
+			  </div>
+			</div>
+			<div class="col-xs-12 col-md-4">
+			  <div class="checkbox">
+                            <label for="wasabi">
+                              <input type="checkbox" name="spice[]" value="wasabi" id="wasabi">
+			      Wasabi
+			    </label>
+			  </div>
+			</div>
+		      </div>
+		      <div class="row">
+			<div class="col-xs-12 col-md-4">
+			  <div class="checkbox">
+                            <label for="hot">
+                              <input type="checkbox" name="spice[]" value="hot" id="hot">
+			      Hot Sauce
+			    </label>
+			  </div>
+			</div>
+			<div class="col-xs-12 col-md-4">
+			  <div class="checkbox">
+                            <label for="mayo">
+                              <input type="checkbox" name="spice[]" value="mayo" id="mayo">
+			      Spicy Mayo
+			    </label>
+			  </div>
+			</div>
+		      </div>
+                  </fieldset>
+	          <br/>	        
+	        
+                  <fieldset>
+                      <legend>Flavour of Sushi</legend>
+		      <div class="row">
+                        <div class="col-xs-12 col-md-4 flavour">
+			  <div class="radio">
+                            <label for="california" class="control-label">
+                              <input type="radio" name="flavour" value="california" id="california" required>
+			      California Roll
+			    </label>
+			  </div>
+			</div>
+                        <div class="col-xs-12 col-md-4 flavour">
+			  <div class="radio">
+                            <label for="salmon" class="control-label">
+                              <input type="radio" name="flavour" value="salmon" id="salmon" required>
+			      Spicy Salmon Roll
+			    </label>
+			  </div>
+			</div>
+                        <div class="col-xs-12 col-md-4 flavour">
+			  <div class="radio">
+                            <label for="salmon" class="control-label">
+                              <input type="radio" name="flavour" value="calamari" id="calamari" required>
+			      Calamari Roll
+			    </label>
+			  </div>
+			</div>
+                      </div>
+                  </fieldset>
+	          <br/>	        
+	        
+                  <fieldset>
+                      <legend>Quantity</legend>
+		      <div class="col-xs-4 col-md-2">
+                        <input type="number" id="quantity" name="quantity" 
+  			       value="1" min="1" max="20" class="form-control" required>
+                      </div>
+                  </fieldset>
+	          <br/>	        
+	        
+                  <fieldset>
+                      <legend>Select order type</legend>
+                      <input type="radio" name="order" value="pickup" id="pickup" required>
+                      <label>Pick up</label>
+                      <input type="radio" name="order" value="delivery" id="delivery" required>
+                      <label>Delivery</label>
+                  </fieldset>
+	          <br/>
+                </div>
+	    
+                <!-- Credit Card information -->
+                <div class="col-xs-12 col-md-4">
+		    <legend>Payment details</legend>
+                    <input type="text" name="firstname" class="form-control" placeholder="Your First Name" ng-model="firstname" required>
+                    <br/>
+                    <br/>
+                    <input type="text" name="lastname" class="form-control" placeholder="Last Name" required>
+                    <br/>
+                    <br/>
+                    <input type="tel" name="phone" class="form-control" pattern="\+?[\d-]*\d"
+                           placeholder="Phone number" required>
+                    <br/>
+                    <br/>
+                    <input type="text" name="credit" class="form-control" pattern="[\d-]+"
+                           placeholder="Credit Card" required>
+                    <br/>
+                    <br/>
+		    <div class="col-xs-4">
+                      <input type="text" name="expirym" class="form-control"
+                             size="2" maxlength="2" placeholder="MM" pattern="\d\d?" title="Expiry Month" required>
+		    </div>
+		    <div class="col-xs-4 col-xs-offset-2">
+                      <input type="text" name="expiryy" class="form-control"
+                             size="2" maxlength="2" placeholder="YY" pattern="\d\d?" title="Expiry Year" required>
+		    </div>
+		    <br/>
+		    <br/>
+		    <br/>
+		    <div class="col-xs-12">
+		      <div class="row">
+			<p class="col-xs-5 lead">Sub-total:</p>
+			<p class="col-xs-2 lead col-xs-offset-1 text-right">{{ Total }}</p>
+			<p class="col-xs-3 lead">CAD</p>
+		      </div>
+		    </div>
+		    <br/>
+		    <br/>
+		    <br/>
+		    <div class="col-xs-12">
+      		      <div class="row">
+    		        <div class="col-xs-12 col-md-6">
+    		          <button type="submit" class="btn btn-primary push-left">place order</button>
+                        </div>
+			<div class="visible-xs visible-sm">
+			  <br/><br/>
+			</div>
+                        <div class="col-xs-12 col-md-6">
+                          <button type="reset" class="btn btn-warning">clear form</button>
+                        </div>
+                      </div>
+		    </div>
+                </div>
+	    </div>
+          </div>
+        </form>
+
+</div>
+
