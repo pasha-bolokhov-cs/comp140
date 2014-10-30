@@ -116,23 +116,11 @@ a {
   padding: 0 0 1em 0;
 }
 
-#expirym {
-  padding: 0 0 0 2em;
-}
-
 .orderform {
   font-size: 12pt;
   font-weight: normal;
   margin: 0;
   padding: 0;
-}
-
-.monthinput {
-  margin: 1em 0.5em 1em 1em;
-}
-
-.yearinput {
-  margin: 1em 1em 1em 0.5em;
 }
 
 label {
@@ -142,5 +130,5 @@ label {
 
 
 .flavour {
-  padding: 0;
+  padding-right: 0;
 }
