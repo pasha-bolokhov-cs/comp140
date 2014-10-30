@@ -10,39 +10,61 @@
 	        
                   <fieldset>
                       <legend>Select Serving</legend>
-                      <select name="serving" id="serving">
-                          <option value="six">six-pack</option>
-                          <option value="eight">eight-pack</option>
-                          <option value="ten">ten-pack</option>
-                      </select>
+		      <div class="row">
+			<div class="col-xs-5 col-md-4">
+			  <select name="serving" id="serving" class="form-control">
+                            <option value="six">six-pack</option>
+                            <option value="eight">eight-pack</option>
+                            <option value="ten">ten-pack</option>
+			  </select>
+			</div>
+		      </div>
                   </fieldset>
 	          <br/>
 	        
                   <fieldset>
                       <legend>Select a spice</legend>
-		      <div class="container-fluid">
-			<div class="row">
-			  <div class="col-xs-12 col-md-4">
-                            <input type="checkbox" name="spice[]" value="soy" id="soy">
-                            <label for="soy">Soy Sauce</label>
+		      <div class="row">
+			<div class="col-xs-12 col-md-4">
+			  <div class="checkbox">
+                            <label for="soy">
+                              <input type="checkbox" name="spice[]" value="soy" id="soy">
+			      Soy Sauce
+			    </label>
+                          </div>
+			</div>
+			<div class="col-xs-12 col-md-4">
+			  <div class="checkbox">
+                            <label for="ginger">
+                              <input type="checkbox" name="spice[]" value="ginger" id="ginger">
+			      Ginger
+			    </label>
 			  </div>
-			  <div class="col-xs-12 col-md-4">
-                            <input type="checkbox" name="spice[]" value="ginger" id="ginger">
-                            <label for="ginger">Ginger</label>
+			</div>
+			<div class="col-xs-12 col-md-4">
+			  <div class="checkbox">
+                            <label for="wasabi">
+                              <input type="checkbox" name="spice[]" value="wasabi" id="wasabi">
+			      Wasabi
+			    </label>
 			  </div>
-			  <div class="col-xs-12 col-md-4">
-                            <input type="checkbox" name="spice[]" value="wasabi" id="wasabi">
-                            <label for="wasabi">Wasabi</label>
+			</div>
+		      </div>
+		      <div class="row">
+			<div class="col-xs-12 col-md-4">
+			  <div class="checkbox">
+                            <label for="hot">
+                              <input type="checkbox" name="spice[]" value="hot" id="hot">
+			      Hot Sauce
+			    </label>
 			  </div>
-		        </div>
-			<div class="row">
-			  <div class="col-xs-12 col-md-4">
-                            <input type="checkbox" name="spice[]" value="hot" id="hot">
-                            <label for="hot">Hot Sauce</label>
-			  </div>
-			  <div class="col-xs-12 col-md-4">
-                            <input type="checkbox" name="spice[]" value="mayo" id="mayo">
-                            <label for="mayo">Spicy Mayo</label>
+			</div>
+			<div class="col-xs-12 col-md-4">
+			  <div class="checkbox">
+                            <label for="mayo">
+                              <input type="checkbox" name="spice[]" value="mayo" id="mayo">
+			      Spicy Mayo
+			    </label>
 			  </div>
 			</div>
 		      </div>
@@ -51,18 +73,29 @@
 	        
                   <fieldset>
                       <legend>Flavour of Sushi</legend>
-                      <input type="radio" name="sushi" value="california" id="california">
-                      <label for="california">California Roll</label>
-                      <input type="radio" name="sushi" value="salmon" id="salmon">
-                      <label for="salmon">Spicy Salmon Roll</label>
-                      <input type="radio" name="sushi" value="calamari" id="calamari">
-                      <label for="salmon">Calamari Roll</label>
+		      <div class="row">
+                        <div class="col-xs-12 col-md-4 flavour">
+                          <input type="radio" name="sushi" value="california" id="california">
+                          <label for="california" class="control-label">California Roll</label>
+			</div>
+                        <div class="col-xs-12 col-md-4 flavour">
+                          <input type="radio" name="sushi" value="salmon" id="salmon">
+                          <label for="salmon" class="control-label">Spicy Salmon Roll</label>
+			</div>
+                        <div class="col-xs-12 col-md-4 flavour">
+                          <input type="radio" name="sushi" value="calamari" id="calamari">
+                          <label for="salmon" class="control-label">Calamari Roll</label>
+			</div>
+                      </div>
                   </fieldset>
 	          <br/>	        
 	        
                   <fieldset>
                       <legend>Quantity</legend>
-                      <input type="number" id="quantity" name="quantity" value="1" min="1" max="20" required>
+		      <div class="col-xs-4 col-md-2">
+                        <input type="number" id="quantity" name="quantity" 
+  			       value="1" min="1" max="20" class="form-control" required>
+                      </div>
                   </fieldset>
 	          <br/>	        
 	        
@@ -79,24 +112,41 @@
                 <!-- Credit Card information -->
                 <div class="col-xs-12 col-md-4">
 		    <legend>Payment details</legend>
-                    <input type="text" name="firstname" class="rightinput" placeholder="Your First Name">
+                    <input type="text" name="firstname" class="form-control" placeholder="Your First Name">
                     <br/>
                     <br/>
-                    <input type="text" name="lastname" class="rightinput" placeholder="Last Name">
+                    <input type="text" name="lastname" class="form-control" placeholder="Last Name">
                     <br/>
                     <br/>
-                    <input type="tel" name="phone" class="rightinput" pattern="\+?[\d-]*\d"
+                    <input type="tel" name="phone" class="form-control" pattern="\+?[\d-]*\d"
                            placeholder="Phone number" required>
                     <br/>
                     <br/>
-                    <input type="text" name="credit" class="rightinput" pattern="[\d-]+"
+                    <input type="text" name="credit" class="form-control" pattern="[\d-]+"
                            placeholder="Credit Card">
                     <br/>
                     <br/>
-                    <input type="text" name="expirym" class="monthinput"
-                           size="2" maxlength="2" placeholder="MM" pattern="\d\d?" title="Expiry Month">/
-                    <input type="text" name="expiryy" class="yearinput"
-                           size="2" maxlength="2" placeholder="YY" pattern="\d\d?" title="Expiry Year">
+		    <div class="col-xs-4">
+                      <input type="text" name="expirym" class="form-control"
+                             size="2" maxlength="2" placeholder="MM" pattern="\d\d?" title="Expiry Month">
+		    </div>
+		    <div class="col-xs-4">
+                      <input type="text" name="expiryy" class="form-control"
+                             size="2" maxlength="2" placeholder="YY" pattern="\d\d?" title="Expiry Year">
+		    </div>
+		    <br/>
+		    <br/>
+		    <br/>
+		    <div class="col-xs-12">
+      		      <div class="row">
+    		        <div class="col-xs-12 col-md-6">
+    		          <button type="submit" class="btn btn-primary push-left">place order</button>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                          <button type="reset" class="btn btn-default">clear form</button>
+                        </div>
+                      </div>
+		    </div>
                 </div>
 	    </div>
           </div>

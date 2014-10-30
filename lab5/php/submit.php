@@ -73,8 +73,7 @@ script.
 
   	     echo "<p><strong>You didn't enter a value for first name." .
               "<br />" .
-              "Please <a href=\"order.html\">go back</a> and re-enter a value
-for first name." .
+              "Please <a href=\"order.html\">go back</a> and re-enter a value for first name." .
               "</strong></p></body></html>";
          exit;
       }
@@ -83,7 +82,7 @@ for first name." .
 
       echo "The current time and date is " . date("H:i, jS F");
 
-	  echo "<br />";
+  echo "<br />";
 
       /* Show the entered form information back to the browser window.
                      If the form has differently named form elements, you will
