@@ -5,7 +5,7 @@
 /**
  * Main AngularJS Web Application
  */
-var app = angular.module('tutorialWebApp', ['ngRoute']);
+var app = angular.module('tutorialWebApp', ['ngRoute', 'formApp']);
 
 /**
  * Configure the Routes
@@ -33,3 +33,12 @@ app.controller('PageCtrl', function (/* $scope, $location, $http */) {
 
 });
 
+
+/*
+ * Order Form application
+ */
+var formApp = angular.module('formApp', []);
+
+formApp.controller(formApp, function($scope) {
+    $scope.total = 11.6;
+    });
