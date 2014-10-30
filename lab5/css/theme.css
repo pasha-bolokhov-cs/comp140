@@ -2,10 +2,6 @@
  * theme.css - Pavel A. Bolokhov
  */
 
-html, body {
-  height: 100%;
-}
-
 body {
   border-width: 0;
   margin: 0;
@@ -13,13 +9,13 @@ body {
 }
 
 
-header {
+#header {
   margin: 0;
   padding: 0;
   width: 100%;
 }
 
-header h1 {
+#header h1 {
   text-align: center; color: yellow; font-size: 3em;
   margin: 0;
   font-family: "Times New Roman", serif, inherit;
@@ -27,26 +23,17 @@ header h1 {
 }
 
 
-.container {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-
 .ad {
   font-size: 21pt;
-  height: 25em;
-  float: right;
-  width: 20%;
+  height: 30em;
+  margin: 0;
   font-family "Arial", sans-serif, inherit;
   background-image: url(../images/ad.jpg);
 }
 
 
 .ad p {
-  padding-left: 1em;
-  padding-top: 1em;
+  padding: 1em;
   color: Gold;
   vertical-align: middle;
 }
@@ -66,18 +53,12 @@ header h1 {
   font-weight: 600;
 }
 
-.nav { 
-  text-align: center;
-  width: 100%;
-  list-style-type: none;
-  background: linear-gradient(to right, pink, salmon);
-}
-
 .navbar {
   padding: 0;
   margin: 0;
   border-width: 0;
-  width: 100%;
+  border-radius: 0;
+  background: linear-gradient(to right, pink, salmon);
 }
 
 
@@ -92,10 +73,8 @@ header h1 {
   border-width: 0;
   margin: 0;
   padding: 3em;
-  float: left;
-  width: 80%;
   font-size: 2em;        /* only needed to set the height of this box */
-  height: 25em;
+  height: 30em;
   overflow: hidden;
   background: linear-gradient(to right, salmon, orchid);
 }
@@ -113,31 +92,21 @@ a {
   line-height: 2em;
 }
 
-.nav ul {
-  display: inline-block;
+.navbar div {
   text-align: center;
-  margin: 0;
-  border-width: 0;
-  width: 100%;
-  padding: 0;
+  padding: 1em;
 }
 
-.nav li {
-  display: inline-block;
-  width: 16%;
-  text-align: center;
-}
 
-.nav li a:visited {
+.navbar a:visited {
   color: blue;
 }
 
-.nav li a:link {
+.navbar a:link {
   text-decoration: none;
 }
 
-.nav>li>a:hover { 
-  background-color: initial;
+.navbar a:hover { 
   text-decoration: underline;
 }
 
@@ -174,3 +143,4 @@ label {
   font-weight: normal;
   margin: 0 2em 0 0;
 }
+
