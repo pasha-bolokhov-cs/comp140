@@ -7,10 +7,11 @@
 </title>
 <style type="text/css">
    .formval { 
-   font-size: 14px;
+   font-size: 12pt;
    font-weight: 900;
    font-family: Verdana, Arial, Helvetica, sans-serif;
    color: blue;
+   line-height: 1em;
    }
 </style>
 </head>
@@ -25,21 +26,21 @@ date_default_timezone_set('America/Vancouver');
 
 /* The form element values are assigned to the PHP variables below.   */
 
-$firstname  = $_REQUEST['firstname'   ];   /* text box   */
-$lastname   = $_REQUEST['lastname'    ];   /* text box   */
-$phone      = $_REQUEST['phone'       ];   /* radio        */
-$credit     = $_REQUEST['credit'      ];   /* checkbox */
-$expirym    = $_REQUEST['expirym'     ];   /* select       */
-$expiryy    = $_REQUEST['expiryy'     ];   /* select       */
-$serving    = $_REQUEST['serving'     ];
-$flavour    = $_REQUEST['flavour'     ];
+$firstname  = $_REQUEST['firstname'];   /*   text box   */
+$lastname   = $_REQUEST['lastname' ];   /*   text box   */
+$phone      = $_REQUEST['phone'    ];   /*   radio      */
+$credit     = $_REQUEST['credit'   ];   /*   checkbox   */
+$expirym    = $_REQUEST['expirym'  ];   /*   select     */
+$expiryy    = $_REQUEST['expiryy'  ];   /*   select     */
+$serving    = $_REQUEST['serving'  ];
+$flavour    = $_REQUEST['flavour'  ];
 if (isset($_REQUEST[ 'spice' ])) {
-  $spice    = $_REQUEST[ 'spice'      ];
+  $spice    = $_REQUEST['spice'    ];
 } else {
   $spice = array();
 }
-$quantity   = $_REQUEST[ 'quantity'   ];
-$order      = $_REQUEST[ 'order'      ];
+$quantity   = $_REQUEST['quantity' ];
+$order      = $_REQUEST['order'    ];
 
 
 /* Information for using dates in PHP is at  http://ca3.php.net/date */
