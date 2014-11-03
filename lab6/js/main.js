@@ -40,35 +40,44 @@ app.controller('PageCtrl', function (/* $scope, $location, $http */) {
 var formApp = angular.module("formApp", []);
 
 formApp.controller("costController", function($scope) {
-	/* initialize the variables which the user will set in the form */
-	$scope.serving="six";
+	/* initialize the price table */
 	$scope.priceTable = {
 	    "california": { "six": 5.0, "eight": 7.0, "ten": 10.0 },
 	    "salmon": { "six": 7.0, "eight": 10.0, "ten": 12.0 },
 	    "calamari": { "six": 9.0, "eight": 12.0, "ten": 14.0 }
 	};
-	$scope.quantity = 1;
+
+	$scope.reset = function() {
+	    $scope.order = {};
+	    $scope.order.serving = "six";
+	    $scope.order.quantity = 1;
+	    $scope.order.spice = { soy: false, ginger: false, wasabi: false, hot: false, mayo: false };
+	};
+
 	$scope.calculateTotal = function() {
 	    total = 0.0;
 
 	    /* basic pricing */
-	    if (typeof($scope.flavour) !== "undefined") {
-		total = $scope.priceTable[$scope.flavour][$scope.serving];
+	    if (typeof($scope.order.flavour) !== "undefined") {
+		total = $scope.priceTable[$scope.order.flavour][$scope.order.serving];
 	    }
 
 	    /* spices */
-	    if (typeof($scope.soy) !== "undefined" && $scope.soy) total += 0.50;
-	    if (typeof($scope.ginger) !== "undefined" && $scope.ginger) total += 0.50;
-	    if (typeof($scope.wasabi) !== "undefined" && $scope.wasabi) total += 0.50;
-	    if (typeof($scope.hot) !== "undefined" && $scope.hot) total += 0.50;
-	    if (typeof($scope.mayo) !== "undefined" && $scope.mayo) total += 0.50;
+	    if ($scope.order.spice.soy) total += 0.50;
+	    if ($scope.order.spice.ginger) total += 0.50;
+	    if ($scope.order.spice.wasabi) total += 0.50;
+	    if ($scope.order.spice.hot) total += 0.50;
+	    if ($scope.order.spice.mayo) total += 0.50;
 
 	    /* quantity */
-	    total *= $scope.quantity;
+	    total *= $scope.order.quantity;
 
 	    /* flat fee for delivery */
-	    if (typeof($scope.delivery) !== "undefined" && $scope.delivery) total += 4.0;
+	    if ($scope.order.handin === "delivery") total += 4.0;
 
 	    return total;
-	}
+	};
+
+	/* initialize */
+	$scope.reset();
     });

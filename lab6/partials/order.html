@@ -1,6 +1,6 @@
 <div id="data">
 
-        <form class="orderform"
+        <form novalidate class="orderform"
 	      ng-app="formApp" ng-controller="costController">
 
 	  <div class="container-fluid">
@@ -16,7 +16,7 @@
                       <legend>Select Serving</legend>
 		      <div class="row">
 			<div class="col-xs-5 col-md-4">
-			  <select name="serving" id="serving" class="form-control" ng-model="serving">
+			  <select name="serving" id="serving" class="form-control" ng-model="order.serving">
                             <option value="six" selected=selected>six-pack</option>
                             <option value="eight">eight-pack</option>
                             <option value="ten">ten-pack</option>
@@ -33,7 +33,7 @@
                         <div class="col-xs-12 col-md-4 flavour">
 			  <div class="radio">
                             <label for="california" class="control-label">
-                              <input type="radio" name="flavour" ng-model="flavour" value="california" id="california" required>
+                              <input type="radio" name="flavour" ng-model="order.flavour" value="california" id="california" required>
 			      California Roll
 			    </label>
 			  </div>
@@ -41,7 +41,7 @@
                         <div class="col-xs-12 col-md-4 flavour">
 			  <div class="radio">
                             <label for="salmon" class="control-label">
-                              <input type="radio" name="flavour" ng-model="flavour" value="salmon" id="salmon" required>
+                              <input type="radio" name="flavour" ng-model="order.flavour" value="salmon" id="salmon" required>
 			      Spicy Salmon Roll
 			    </label>
 			  </div>
@@ -49,7 +49,7 @@
                         <div class="col-xs-12 col-md-4 flavour">
 			  <div class="radio">
                             <label for="salmon" class="control-label">
-                              <input type="radio" name="flavour" ng-model="flavour" value="calamari" id="calamari" required>
+                              <input type="radio" name="flavour" ng-model="order.flavour" value="calamari" id="calamari" required>
 			      Calamari Roll
 			    </label>
 			  </div>
@@ -65,7 +65,7 @@
 			<div class="col-xs-12 col-md-4">
 			  <div class="checkbox">
                             <label for="soy">
-                              <input type="checkbox" name="spice[]" ng-model="soy" value="soy" id="soy">
+                              <input type="checkbox" name="spice[]" ng-model="order.spice.soy" value="soy" id="soy">
 			      Soy Sauce
 			    </label>
                           </div>
@@ -73,7 +73,7 @@
 			<div class="col-xs-12 col-md-4">
 			  <div class="checkbox">
                             <label for="ginger">
-                              <input type="checkbox" name="spice[]" ng-model="ginger" value="ginger" id="ginger">
+                              <input type="checkbox" name="spice[]" ng-model="order.spice.ginger" value="ginger" id="ginger">
 			      Ginger
 			    </label>
 			  </div>
@@ -81,7 +81,7 @@
 			<div class="col-xs-12 col-md-4">
 			  <div class="checkbox">
                             <label for="wasabi">
-                              <input type="checkbox" name="spice[]" ng-model="wasabi" value="wasabi" id="wasabi">
+                              <input type="checkbox" name="spice[]" ng-model="order.spice.wasabi" value="wasabi" id="wasabi">
 			      Wasabi
 			    </label>
 			  </div>
@@ -91,7 +91,7 @@
 			<div class="col-xs-12 col-md-4">
 			  <div class="checkbox">
                             <label for="hot">
-                              <input type="checkbox" name="spice[]" ng-model="hot" value="hot" id="hot">
+                              <input type="checkbox" name="spice[]" ng-model="order.spice.hot" value="hot" id="hot">
 			      Hot Sauce
 			    </label>
 			  </div>
@@ -99,7 +99,7 @@
 			<div class="col-xs-12 col-md-4">
 			  <div class="checkbox">
                             <label for="mayo">
-                              <input type="checkbox" name="spice[]" ng-model="mayo" value="mayo" id="mayo">
+                              <input type="checkbox" name="spice[]" ng-model="order.spice.mayo" value="mayo" id="mayo">
 			      Spicy Mayo
 			    </label>
 			  </div>
@@ -112,7 +112,7 @@
                   <fieldset>
                       <legend>Quantity</legend>
 		      <div class="col-xs-4 col-md-2">
-                        <input type="number" id="quantity" name="quantity" ng-model="quantity"
+                        <input type="number" id="quantity" name="quantity" ng-model="order.quantity"
   			       value="1" min="1" max="20" class="form-control" required>
                       </div>
                   </fieldset>
@@ -120,9 +120,9 @@
 	        
                   <fieldset>
                       <legend>Select order type</legend>
-                      <input type="radio" name="order" value="pickup" id="pickup" ng-model="pickup" required>
+                      <input type="radio" name="order" value="pickup" id="pickup" ng-model="order.handin" required>
                       <label>Pick up</label>
-                      <input type="radio" name="order" value="delivery" id="delivery" ng-model="delivery" required>
+                      <input type="radio" name="order" value="delivery" id="delivery" ng-model="order.handin" required>
                       <label>Delivery</label>
                   </fieldset>
 	          <br/>
@@ -172,13 +172,13 @@
 		    <div class="col-xs-12">
       		      <div class="row">
     		        <div class="col-xs-12 col-md-6">
-    		          <button type="submit" class="btn btn-primary push-left">place order</button>
+    		          <button type="submit" class="btn btn-primary push-left" ng-disabled="true">place order</button>
                         </div>
 			<div class="visible-xs visible-sm">
 			  <br/><br/>
 			</div>
                         <div class="col-xs-12 col-md-6">
-                          <button type="reset" class="btn btn-warning">clear form</button>
+                          <button type="reset" class="btn btn-warning" ng-click="reset()">clear form</button>
                         </div>
                       </div>
 		    </div>
