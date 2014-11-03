@@ -42,9 +42,9 @@ var formApp = angular.module("formApp", []);
 formApp.controller("costController", function($scope) {
 	/* initialize the price table */
 	$scope.priceTable = {
-	    "california": { "six": 5.0, "eight": 7.0, "ten": 10.0 },
-	    "salmon": { "six": 7.0, "eight": 10.0, "ten": 12.0 },
-	    "calamari": { "six": 9.0, "eight": 12.0, "ten": 14.0 }
+	    "california": { "six": 5.0, "eight": 7.0,  "ten": 10.0 },
+	    "salmon":     { "six": 7.0, "eight": 10.0, "ten": 12.0 },
+	    "calamari":   { "six": 9.0, "eight": 12.0, "ten": 14.0 }
 	};
 
 	$scope.reset = function() {
@@ -72,10 +72,10 @@ formApp.controller("costController", function($scope) {
 	    /* quantity */
 	    total *= $scope.order.quantity;
 
-	    /* flat fee for delivery */
-	    if ($scope.order.handin === "delivery") total += 4.0;
+	    /* a 15% discount for pick-up */
+	    if ($scope.order.handin === "pickup") total *= (1.00 - 0.15);
 
-	    return total;
+	    return total.toFixed(2);
 	};
 
 	/* initialize */
