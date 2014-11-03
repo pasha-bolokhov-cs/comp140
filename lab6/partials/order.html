@@ -6,7 +6,10 @@
 	  <div class="container-fluid">
 
             <div class="row">
-            <!-- Order details -->
+
+              <!------------------->
+              <!-- Order details -->
+              <!------------------->
                 <div class="col-xs-12 col-md-8">
 	        
                   <fieldset>
@@ -22,14 +25,47 @@
 		      </div>
                   </fieldset>
 	          <br/>
-	        
+
+	          <!-- select the flavour -->
+                  <fieldset>
+                      <legend>Flavour of Sushi</legend>
+		      <div class="row">
+                        <div class="col-xs-12 col-md-4 flavour">
+			  <div class="radio">
+                            <label for="california" class="control-label">
+                              <input type="radio" name="flavour" ng-model="flavour" value="california" id="california" required>
+			      California Roll
+			    </label>
+			  </div>
+			</div>
+                        <div class="col-xs-12 col-md-4 flavour">
+			  <div class="radio">
+                            <label for="salmon" class="control-label">
+                              <input type="radio" name="flavour" ng-model="flavour" value="salmon" id="salmon" required>
+			      Spicy Salmon Roll
+			    </label>
+			  </div>
+			</div>
+                        <div class="col-xs-12 col-md-4 flavour">
+			  <div class="radio">
+                            <label for="salmon" class="control-label">
+                              <input type="radio" name="flavour" ng-model="flavour" value="calamari" id="calamari" required>
+			      Calamari Roll
+			    </label>
+			  </div>
+			</div>
+                      </div>
+                  </fieldset>
+	          <br/>	        
+
+	          <!-- select a spice -->
                   <fieldset>
                       <legend>Select a spice</legend>
 		      <div class="row">
 			<div class="col-xs-12 col-md-4">
 			  <div class="checkbox">
                             <label for="soy">
-                              <input type="checkbox" name="spice[]" value="soy" id="soy">
+                              <input type="checkbox" name="spice[]" ng-model="soy" value="soy" id="soy">
 			      Soy Sauce
 			    </label>
                           </div>
@@ -37,7 +73,7 @@
 			<div class="col-xs-12 col-md-4">
 			  <div class="checkbox">
                             <label for="ginger">
-                              <input type="checkbox" name="spice[]" value="ginger" id="ginger">
+                              <input type="checkbox" name="spice[]" ng-model="ginger" value="ginger" id="ginger">
 			      Ginger
 			    </label>
 			  </div>
@@ -45,7 +81,7 @@
 			<div class="col-xs-12 col-md-4">
 			  <div class="checkbox">
                             <label for="wasabi">
-                              <input type="checkbox" name="spice[]" value="wasabi" id="wasabi">
+                              <input type="checkbox" name="spice[]" ng-model="wasabi" value="wasabi" id="wasabi">
 			      Wasabi
 			    </label>
 			  </div>
@@ -55,7 +91,7 @@
 			<div class="col-xs-12 col-md-4">
 			  <div class="checkbox">
                             <label for="hot">
-                              <input type="checkbox" name="spice[]" value="hot" id="hot">
+                              <input type="checkbox" name="spice[]" ng-model="hot" value="hot" id="hot">
 			      Hot Sauce
 			    </label>
 			  </div>
@@ -63,7 +99,7 @@
 			<div class="col-xs-12 col-md-4">
 			  <div class="checkbox">
                             <label for="mayo">
-                              <input type="checkbox" name="spice[]" value="mayo" id="mayo">
+                              <input type="checkbox" name="spice[]" ng-model="mayo" value="mayo" id="mayo">
 			      Spicy Mayo
 			    </label>
 			  </div>
@@ -71,42 +107,12 @@
 		      </div>
                   </fieldset>
 	          <br/>	        
-	        
-                  <fieldset>
-                      <legend>Flavour of Sushi</legend>
-		      <div class="row">
-                        <div class="col-xs-12 col-md-4 flavour">
-			  <div class="radio">
-                            <label for="california" class="control-label">
-                              <input type="radio" name="flavour" value="california" id="california" required>
-			      California Roll
-			    </label>
-			  </div>
-			</div>
-                        <div class="col-xs-12 col-md-4 flavour">
-			  <div class="radio">
-                            <label for="salmon" class="control-label">
-                              <input type="radio" name="flavour" value="salmon" id="salmon" required>
-			      Spicy Salmon Roll
-			    </label>
-			  </div>
-			</div>
-                        <div class="col-xs-12 col-md-4 flavour">
-			  <div class="radio">
-                            <label for="salmon" class="control-label">
-                              <input type="radio" name="flavour" value="calamari" id="calamari" required>
-			      Calamari Roll
-			    </label>
-			  </div>
-			</div>
-                      </div>
-                  </fieldset>
-	          <br/>	        
-	        
+	        	        
+		  <!-- quantity -->
                   <fieldset>
                       <legend>Quantity</legend>
 		      <div class="col-xs-4 col-md-2">
-                        <input type="number" id="quantity" name="quantity" 
+                        <input type="number" id="quantity" name="quantity" ng-model="quantity"
   			       value="1" min="1" max="20" class="form-control" required>
                       </div>
                   </fieldset>
@@ -114,15 +120,18 @@
 	        
                   <fieldset>
                       <legend>Select order type</legend>
-                      <input type="radio" name="order" value="pickup" id="pickup" required>
+                      <input type="radio" name="order" value="pickup" id="pickup" ng-model="pickup" required>
                       <label>Pick up</label>
-                      <input type="radio" name="order" value="delivery" id="delivery" required>
+                      <input type="radio" name="order" value="delivery" id="delivery" ng-model="delivery" required>
                       <label>Delivery</label>
                   </fieldset>
 	          <br/>
                 </div>
 	    
-                <!-- Credit Card information -->
+
+		<!----------------------------->
+		<!-- Credit Card information -->
+		<!----------------------------->
                 <div class="col-xs-12 col-md-4">
 		    <legend>Payment details</legend>
                     <input type="text" name="firstname" class="form-control" placeholder="Your First Name" ng-model="firstname" required>
@@ -153,7 +162,7 @@
 		    <div class="col-xs-12">
 		      <div class="row">
 			<p class="col-xs-6 lead">Sub-total:</p>
-			<p class="col-xs-2 lead text-right">{{ total }}</p>
+			<p class="col-xs-2 lead text-right">{{ calculateTotal() }}</p>
 			<p class="col-xs-3 lead col-xs-offset-1">CAD</p>
 		      </div>
 		    </div>

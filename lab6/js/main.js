@@ -40,5 +40,35 @@ app.controller('PageCtrl', function (/* $scope, $location, $http */) {
 var formApp = angular.module("formApp", []);
 
 formApp.controller("costController", function($scope) {
-    $scope.total = 0.0;
+	/* initialize the variables which the user will set in the form */
+	$scope.serving="six";
+	$scope.priceTable = {
+	    "california": { "six": 5.0, "eight": 7.0, "ten": 10.0 },
+	    "salmon": { "six": 7.0, "eight": 10.0, "ten": 12.0 },
+	    "calamari": { "six": 9.0, "eight": 12.0, "ten": 14.0 }
+	};
+	$scope.quantity = 1;
+	$scope.calculateTotal = function() {
+	    total = 0.0;
+
+	    /* basic pricing */
+	    if (typeof($scope.flavour) !== "undefined") {
+		total = $scope.priceTable[$scope.flavour][$scope.serving];
+	    }
+
+	    /* spices */
+	    if (typeof($scope.soy) !== "undefined" && $scope.soy) total += 0.50;
+	    if (typeof($scope.ginger) !== "undefined" && $scope.ginger) total += 0.50;
+	    if (typeof($scope.wasabi) !== "undefined" && $scope.wasabi) total += 0.50;
+	    if (typeof($scope.hot) !== "undefined" && $scope.hot) total += 0.50;
+	    if (typeof($scope.mayo) !== "undefined" && $scope.mayo) total += 0.50;
+
+	    /* quantity */
+	    total *= $scope.quantity;
+
+	    /* flat fee for delivery */
+	    if (typeof($scope.delivery) !== "undefined" && $scope.delivery) total += 4.0;
+
+	    return total;
+	}
     });
