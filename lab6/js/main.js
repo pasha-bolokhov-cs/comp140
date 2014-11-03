@@ -37,8 +37,8 @@ app.controller('PageCtrl', function (/* $scope, $location, $http */) {
 /*
  * Order Form application
  */
-var formApp = angular.module('formApp', []);
+var formApp = angular.module("formApp", []);
 
-formApp.controller(formApp, function($scope) {
-    $scope.total = 11.6;
+formApp.controller("costController", function($scope) {
+    $scope.total = 0.0;
     });
