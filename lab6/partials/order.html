@@ -154,12 +154,16 @@
                       <input type="text" name="expirym" ng-model="order.expirym" class="form-control"
                              size="2" maxlength="2" placeholder="MM" ng-pattern="/^\d\d?$/" title="Expiry Month" required>
 		    </div>
-		    <div class="error col-xs-1" ng-show="orderform.expirym.$error.pattern"><small>Two digits</small></div>
-		    <div class="col-xs-4 col-xs-offset-2">
+		    <div class="error col-xs-2" ng-show="orderform.expirym.$dirty && 
+							 orderform.expirym.$invalid &&
+							 orderform.expirym.$error.pattern"><small>Two digits</small></div>
+		    <!-- show separating padding only if there is no error -->
+		    <div class="col-xs-2" ng-show="!orderform.expirym.$error.pattern"></div>
+		    <div class="col-xs-4">
                       <input type="text" name="expiryy" ng-model="order.expiryy" class="form-control"
                              size="2" maxlength="2" placeholder="YY" ng-pattern="/^\d\d?$/" title="Expiry Year" required>
 		    </div>
-		    <div class="error col-xs-1" ng-show="orderform.expiryy.$error.pattern"><small>Two digits</small></div>
+		    <div class="error col-xs-2" ng-show="orderform.expiryy.$error.pattern"><small>Two digits</small></div>
 		    <br/>
 		    <br/>
 		    <br/>
