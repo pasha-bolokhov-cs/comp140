@@ -5,7 +5,7 @@
 /**
  * Main AngularJS Web Application
  */
-var app = angular.module('tutorialWebApp', ['ngRoute', 'formApp']);
+var app = angular.module('webApp', ['ngRoute', 'formApp']);
 
 /**
  * Configure the Routes
