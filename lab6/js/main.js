@@ -47,6 +47,9 @@ formApp.controller("costController", function($scope) {
 	    "calamari":   { "six": 9.0, "eight": 12.0, "ten": 14.0 }
 	};
 
+	/* current date */
+	$scope.getDate = new Date;
+
 	$scope.reset = function() {
 	    $scope.order = {};
 	    $scope.order.serving = "six";
