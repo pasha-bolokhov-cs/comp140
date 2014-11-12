@@ -39,7 +39,8 @@ app.controller('PageCtrl', function (/* $scope, $location, $http */) {
  */
 var formApp = angular.module("formApp", []);
 
-formApp.controller("costController", function($scope) {
+formApp.controller("costController", function($scope, $compile) {
+
 	/* initialize the price table */
 	$scope.priceTable = {
 	    "california": { "six": 5.0, "eight": 7.0,  "ten": 10.0 },
@@ -55,6 +56,7 @@ formApp.controller("costController", function($scope) {
 	    $scope.order.serving = "six";
 	    $scope.order.quantity = 1;
 	    $scope.order.spice = { soy: false, ginger: false, wasabi: false, hot: false, mayo: false };
+	    /*    $scope.orderform.$setPristine();    */
 	};
 
 	$scope.calculateTotal = function() {
