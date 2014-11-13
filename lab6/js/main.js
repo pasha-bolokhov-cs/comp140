@@ -56,7 +56,9 @@ formApp.controller("costController", function($scope, $compile) {
 	    $scope.order.serving = "six";
 	    $scope.order.quantity = 1;
 	    $scope.order.spice = { soy: false, ginger: false, wasabi: false, hot: false, mayo: false };
-	    /*    $scope.orderform.$setPristine();    */
+	    if ($scope.orderform) {
+		$scope.orderform.$setPristine();
+	    }
 	};
 
 	$scope.calculateTotal = function() {
