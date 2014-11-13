@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+</head>
+<body>
+<h2>Computer Science 140 - Lab 7</h2>
+<p>Due Week of November 24-28, in two weeks. We will have lab next week to give you extra time to complete this lab - this will also give you time to have your partner test your lab and answer the usability questions.</p>
+<h3>Purpose</h3>
+<p>Explore the usage of jQuery, third party HTML5 widgets, visit counter, layers and invalid EventListeners.</p>
+<h3>Overview</h3>
+<p>Provide a time and date form picker for the order form pickup option and customize the form into layers. Modify the CSS to style to form to enhance UX. Finally, test your classmates' form while they in turn test yours - answering some usability questions around appeal and functionality.</p>
+<h3>Resources</h3>
+<ul>
+<li>Review the Kendo UI widget <a href="http://docs.kendoui.com/api/web/datetimepicker">http://docs.kendoui.com/api/web/datetimepicker</a>;</li>
+<li><a href="http://learn.jquery.com/effects/intro-to-effects/">jQuery show/hide Effects</a> and jQuery <a href="http://www.w3schools.com/js/">tutorials</a>from the W3schools.</li>
+<li>Invalid addEventListeners as described on the <a href="http://tiffanybbrown.com/2014/03/23/html5-determining-which-validation-constraint-rule-wasnt-met/">Tifany B. Brown blog</a>.</li>
+</ul>
+<h2>Process</h2>
+<h3>Date Time Picker &amp; Counter</h3>
+<p>Follow these steps to complete the lab work. Take your time doing this lab &mdash; if you rush through the steps, you may miss details. Don't copy and paste this lab's code to ensure you are solidifying the concepts.</p>
+<ol>
+<li>Open the File Explorer and create the following new folders on your H: drive:<br />
+<pre>comp140\lab07
+comp140\lab07\PizzaPalace
+comp140\lab07\PizzaPalace\images
+comp140\lab07\PizzaPalace\script</pre>
+<p>On the H: drive copy all your previous lab 6 work (the html files and the image files) into your new lab 7 folders. Open WinSCP and copy the new lab07 folder to your deepblue account inside the public_html\comp140 folder.</p>
+</li>
+<li>Briefly review the Kendo UI widget at <a href="http://demos.kendoui.com/">http://demos.kendoui.com</a>&nbsp;and take a look at some of the demos. These UI widgets were constructed using a combination of HTML, CSS, JavaScript and a form of JavaScript called jQuery: a cross-browser library of functions designed to simplify browser scripting of HTML. jQuery is the most popular and free JavaScript library in use today. Native HTML form elements do not provide the rich functionality that these custom widgets provide.<br /><br /></li>
+<li>This lab will add in the Kendo UI DateTimePicker widget into the order form from the previous lab so users can select the pizza delivery time and date. Edit the new lab 7&nbsp;<span style="font-family: monospace;">order.html</span> file and add in the following links and script references into the HTML &lt;head&gt; element:<br /><br />
+<pre>&lt;link href="http://cdn.kendostatic.com/2012.2.710/styles/kendo.common.min.css" rel="stylesheet"&gt;</pre>
+<pre>&lt;link href="http://cdn.kendostatic.com/2012.2.710/styles/kendo.default.min.css" rel="stylesheet"&gt;</pre>
+<pre>&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"&gt;&lt;/script&gt;</pre>
+<pre>&lt;script src="http://cdn.kendostatic.com/2013.3.1119/js/kendo.all.min.js"&gt;&lt;/script&gt;</pre>
+<p>The first two link elements cause the CSS libraries from Kendo to be included into this <span style="font-family: monospace;">order.html</span> file. The next two script elements cause the jQuery library and Kendo's JavaScript library to be included into this <span style="font-family: monospace;">order.html</span> file. Without these references the calls to jQuery functions which follow in this lab will not work.&nbsp;</p>
+<p>jQuery is shorthand for using JavaScript. For example, in JavaScript you access elements in the HTML document this way:</p>
+<pre>document.getElementById("menu") </pre>
+<pre>document.getElementsByTagName("input")</pre>
+<p>In jQuery the same thing is done this way using a selector reference:</p>
+<pre>$("#menu")
+$("input")</pre>
+<p>The $ symbol is used to access or define jQuery functions. After the $ symbol the parentheses enclose a selector, which can be a tag name, or a tag name with a CSS class style, or a tag name with a specific CSS ID style.</p>
+<p><span style="font-family: monospace;">$("p") <span class="p">- a jQuery reference to all</span> &lt;p&gt; <span class="p">elements in the current document</span></span></p>
+<p><span style="font-family: monospace;">$(".auth") <span class="p">&ndash; a jQuery reference to all elements having class=&ldquo;auth&rdquo;</span></span></p>
+<p><span style="font-family: monospace;">$("#menu") <span class="p">&ndash; a jQuery reference to the one element having id=&ldquo;menu&rdquo; In jQuery the notation</span> $(document) <span class="p">refers to the current HTML document.</span></span></p>
+<p>Following the jQuery selector reference is the <strong><em>method</em> </strong>(action) for the designated selector reference, as in:</p>
+<p><span style="font-family: monospace;">$("p").hide(); </span>- hide all &lt;p&gt; elements (they are not displayed).</p>
+<p><span style="font-family: monospace;">$(".auth").show(); </span>- cause all hidden elements having class="auth" to be displayed.</p>
+<p><span style="font-family: monospace;">$("#menu").fadeOut("slow"); </span>- cause the element having id="menu" to fade out slowly.</p>
+</li>
+<li>The following jQuery code is added as a new &lt;script&gt; element just before the &lt;/head&gt; tag.<br /><br />
+<pre>&lt;script type= "text/javascript"&gt;
+    $(document).ready(function() {
+      $("#datetimepicker").kendoDateTimePicker( {
+         value: new Date(), interval: 30,
+      });
+    });
+&lt;/script&gt;</pre>
+<p>This jQuery code initializes the third party Kendo UI widget <span style="font-family: monospace;">kendoDateTimePicker</span> to a desired configuration (assigning an initial <span style="font-family: monospace;">value</span> and <span style="font-family: monospace;">interval</span> properties to the <span style="font-family: monospace;">kendoDateTimePicker</span>) . The JavaScript notation <span style="font-family: monospace;">new Date()</span> is the current date. The interval property directs the <span style="font-family: monospace;">kendoDateTimePicker</span> to only select times on the half hour.</p>
+<p>The addition of the <span style="font-family: monospace;">.ready()</span> to the <span style="font-family: monospace;">$(document)</span> defines a new function to execute as soon as the current document is loaded into the browser. This new function <span style="text-decoration: underline;">does not have a name</span> but it does perform one task: set the Kendo datetimepicker element to its initial configuration.</p>
+</li>
+<li>
+<p>Next we will add in the widget elements into the HTML document, locate the HTML which defines the Pickup and Delivery radio buttons:</p>
+<p>Insert the following lines after the "Delivery" button element:</p>
+<p><span style="font-family: monospace;">&lt;br&gt;</span></p>
+<p><span style="font-family: monospace;">&lt;div id="orderdate"&gt;</span></p>
+<p><span style="font-family: monospace;">&lt;input id="datetimepicker"&gt;</span></p>
+<p><span style="font-family: monospace;">&lt;/div&gt;</span></p>
+</li>
+<li>Save the <span style="font-family: monospace;">order.html</span> file and verify the page enables the new UI widget correctly in Firefox, Chrome, and Internet Explorer browsers.7. The <span style="font-family: monospace;">timePicker</span> dropdown needs to be configured so that the minutes appear in 15 minute intervals on the quarter hour. Can you determine where this would need to be modified? (Hint: check the kendoUI demo page for DateTimePicker and look under the Documentation) Make the necessary updates where required.<br /><br /></li>
+<li>It would not make sense to allow for an order to be made for the previous day so the<span style="font-family: monospace;">datetimepicker</span> widget needs to be configured to prevent that. Make the necessary changes to the widget so that the earliest day is the current day. (Hint: look for the <span style="font-family: monospace;">min</span> method in the documentation.)</li>
+<li>
+<p>Occasionally it is useful to store information locally on the user's computer using a "cookie". Cookies are small text files read and written by the browser until the cookies expire. You will use a jQuery library to set up a cookie that will count the number of times the page has been visited by the current user. Copy the&nbsp;<a href="jquery.cookie.txt" target="_blank">jquery.cookie.txt</a>&nbsp;file to your deepblue lab 7 script folder and rename it with the proper .js file format extension. Add a script reference to the <span style="font-family: monospace;">script/<span>j</span>query.cookie.js</span> library <span style="text-decoration: underline;">aft<span class="s6">er</span> the jQuery script reference</span> in the &lt;head&gt; of your HTML.</p>
+<p><span style="font-family: monospace;">&lt;script src="script/jquery.cookie.js"&gt;&lt;/script&gt;</span></p>
+<p>Within the existing jQuery script element you can add this new jQuery code which will create a new cookie and store a single number count in it.</p>
+<pre><span style="font-family: monospace; opacity: .4;">$(document).ready(function () {
+  <!--  if (typeof(now) === 'undefined') { 
+        now = new Date(); 
+        var mins = now.getMinutes(); // the current minute (0-59) 
+        var quarterHours = Math.round(mins / 10); 
+        
+        if (quarterHours == 5) { 
+            now.setHours(now.getHours() + 1); 
+        } 
+        var rounded = (quarterHours * 15) % 60; 
+        now.setMinutes(rounded); 
+    }--></span>
+    var cookie_name = "myCookie";
+    // Create the session cookie with its name &ldquo;myCookie&rdquo;.
+    var cookie_value = $.cookie(cookie_name);
+    // If the cookie does not exist yet, create it.
+    if ( cookie_value == null || isNaN(cookie_value)) {
+        cookie_value = 0;
+    }
+    
+    cookie_value = parseInt(cookie_value);
+    $.cookie(cookie_name,
+            ++cookie_value,
+            { expires: 7 },
+            { path: '/' });
+
+    $('#splash').html("You have visited here " + cookie_value
+                    + ' times!');
+    $('#splash').show();
+
+    <span style="font-family: monospace; opacity: .4;">$("#datetimepicker").kendoDateTimePicker( {&lt;
+            /*&hellip; from step 4*/
+    } ) ;
+});</span></pre>
+<p>The id element <span style="font-family: monospace;">splash</span> must be defined somewhere in your HTML in order for it to be displayed. Just inside the <span style="font-family: monospace;">middlebox</span> would be fine. You can verify the cookie exists once you refresh the page by searching for it in the browser options.</p>
+<p>In the Google Chrome browser open the <span style="font-family: monospace;">order.html</span> web page from your deepblue site. Click the F12 key on the keyboard to bring up the developers tools (or right-click to inspect element) displayed on the lower half of the browser window. Click on the Resources menu tab. Click on the dark gray arrow to the left of the Cookies option to expand the view of available cookies for deepblue.cs.camosun.bc.ca. Click on the deepblue site and you should see the myCookie cookie in the panel with its current value and expiry date. Right click on that cookie to delete it to test your JavaScript.</p>
+</li>
+<li>The delivery time should be selected on the quarter hour which means the <span style="font-family: monospace;">kendoDateTimePicker</span>widget should show only times such as 5:00PM, 5:15PM, 5:30PM, 5:45PM, 6:00PM, etc. Add the following JavaScript code just after the jQuery ready function for the kendoDateTimePicker:<br /><br />
+<pre><span style="opacity: .4;">$(document).ready(function () {</span>
+       if (typeof(now) === 'undefined') {
+            now = new Date();
+            var mins = now.getMinutes(); // the current minute (0-59)
+            var quarterHours = Math.round(mins / 10);
+            if (quarterHours == 5) {
+                now.setHours(now.getHours() + 1);
+            }
+            var rounded = (quarterHours * 15) % 60;
+            now.setMinutes(rounded);
+        }
+    <span style="opacity: .4;">var cookie_name = "myCookie";</span></pre>
+<p>Change the <span style="font-family: monospace;">value</span> and <span style="font-family: monospace;">min</span> properties for the <span style="font-family: monospace;">kendoDateTimePicker</span> in the jQuery to the JavaScript named <span style="font-family: monospace;">now</span> instead of <span style="font-family: monospace;">new Date()</span>. The above JavaScript code is supposed to set the variable <span style="font-family: monospace;">now</span> to the date rounded forward to the <em>nearest&lt; quarter hour</em> but it is buggy (it has two typos you must correct). <em>Hint:</em> if the current minute is between 0 and 14, then <span style="font-family: monospace;">quarterHours</span> should be 0. If the current minute is between 15 and 29, then <span style="font-family: monospace;">quarterHours</span> should be 1. If the current minute is between 30 and 44, then <span style="font-family: monospace;">quarterHours</span> should be 2. If the current minute is between 45 and 59, then <span style="font-family: monospace;">quarterHours</span> should be 3.<br /> When you have the JavaScript working, your <span style="font-family: monospace;">kendoDateTimePicker</span> widget should automatically set itself to the time on the quarter hour when you load the order web page.</p>
+</li>
+<li>Modify the JavaScript code so that the selected delivery time is a minimum of 30min from now. The next step is to make the splash div show the delivery date and time when you select from the kendoDateTimePicker. To do this we need to define a change event handler within the <span style="font-family: monospace;">kendoDateTimePicker</span>.
+<pre>change: onChange</pre>
+<p>and define an <span style="font-family: monospace;">onChange</span> function within the <span style="font-family: monospace;">DateTimePicker</span>:</p>
+<pre><span style="opacity: .4;">$(document).ready(function () {
+    $("#datetimepicker").kendoDateTimePicker({</span>
+        change: onChange
+    <span style="opacity: .4;">});</span>
+
+    function onChange() {
+        delivery = kendo.toString(this.value(), 'g');
+        // write the jQuery to set div splash to:
+        // <span style="color: #943533;">Selected delivery arrival is delivery</span>
+    }
+<span style="opacity: .4;">});</span></pre>
+</li>
+</ol>
+<h3>Layers and Invalid EventListener</h3>
+<p>In order to improve UX by not overwhelming out customers with the length of our form we will break it down into 2/3 "pages" (your choice) or layers. All of these pages will in fact be in the same <span style="font-family: monospace;">order.html</span> file, however, we will <span style="font-family: monospace;">.show()</span> or <span style="font-family: monospace;">.hide()</span> them using next and back buttons</p>
+<ol>
+<li>Include a new line with <span style="font-family: monospace;">&lt;div id="Page1"&gt;</span> following the <span style="font-family: monospace;">&lt;legend&gt;Place your order&lt;/legend&gt;</span>. This id will link to the embedded JavaScript that will <span style="font-family: monospace;">hide()</span> or <span style="font-family: monospace;">.show()</span> the "pages" based on where the user clicks. Add another <span style="font-family: monospace;">&lt;div id="Page2"&gt;</span> and <span style="font-family: monospace;">&lt;div id="Page3"&gt;</span> where you think it's appropriate. Don't forget to close your <span style="font-family: monospace;"><span style="font-family: monospace;">&lt;/div&gt; tags and add a button element to the next page and then back to the previous. For example,</span></span>
+<pre>&lt;/div&gt;
+&lt;button class="toPage1"&gt;Back&lt;/button &gt;&lt;button class="toPage3"&gt;Next&lt;/button&gt;
+  &lt;/div&gt; <em>&lt;!-- End of Page2 --&gt;</em>
+    &lt;div id="Page3"&gt;
+      <span style="opacity: .4;">&lt;div class="row"&gt;
+        ....</span></pre>
+</li>
+<li>Now we need to determine which default layers will show up when the <span style="font-family: monospace;">order.html</span> is first loaded. Add this under the <span style="font-family: monospace;">onChange()</span>function:
+<pre><span style="opacity: .4;">function onChange() { 
+        delivery = kendo.toString(this.value(), 'g'); 
+        // write the jQuery to set div splash to: 
+        // Selected delivery arrival is delivery
+        }</span>
+    //Show hide Layers
+    $('#Page1').show();  
+    $('#Page2').hide();
+    $('#Page3').hide();<br /><br /></pre>
+</li>
+<li>Following this, create a function that will call the class selector as an object, using the .click method to change the above layers:
+<pre>$('.toPage1').click(function(){
+    $('#Page1').show();  
+    $('#Page2').hide();
+    $('#Page3').hide();
+}</pre>
+</li>
+<li>Next you need to solve the validation problem. How can we prevent the user from going on to the next layer before they have filled out all the required fields. Use the following addEventListener and look at the <a href="http://tiffanybbrown.com/2014/03/23/html5-determining-which-validation-constraint-rule-wasnt-met/">invalid EventListner tutorial</a>&nbsp;found on the Tifany B. Brown blog:
+<pre></pre>
+<pre>elem.addEventListener("invalid", function(e){
+}</pre>
+</li>
+</ol>
+<h3>Making it Pretty</h3>
+<p>Use your CSS skills and the <a href="http://www.w3schools.com/cssref/default.asp">CSS W3Schools Properties Reference</a> to impress your partner with you stylish and sleek form. Feel free to remove or stylize the &lt;fieldsets&gt; :)</p>
+<p>For example, you will probably want to have all of the heights for the various layers consistent by using something along the lines of:</p>
+<pre>#Page1, #Page2, #Page3 { height:400px;}</pre>
+<h3>Hand In / Submit</h3>
+<p>After you have had your partner test your newly improved website send me an email message <a href="mailto:julia.hunerli30@online.camosun.ca">julia.hunerli30@online.camosun.ca</a> with the subject: Comp 140 Lab 7 John Smith &amp; Jane Smith (where John Smith is your name, and Jane Smith is your partners). The body of the message should contain your URL <span style="font-family: monospace;">http://deepblue.cs.camosun.bc.ca/~cst4xx/comp140/lab07/PizzaPalace/order.html</span> and the answers to the following questions:</p>
+<p>Write your <span style="text-decoration: underline;">partner's responses</span> to these usability questions based on their experience of filling out your website:</p>
+<ol>
+<li>Where did they decide to break the form into layers? How's the spacing, does eveything look aligned? Did the new layout hinder or help your experience? Why?</li>
+<li>What about the form styling did you like best? What would you like to have seen improved? (keep your comments directed to the form only).</li>
+</ol>
+</body>
+</html>
