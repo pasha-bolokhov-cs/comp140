@@ -39,7 +39,7 @@ app.controller('PageCtrl', function (/* $scope, $location, $http */) {
  */
 var formApp = angular.module("formApp", []);
 
-formApp.controller("costController", function($scope, $compile) {
+formApp.controller("costController", function($scope, $http) {
 
 	/* initialize the price table */
 	$scope.priceTable = {
@@ -51,16 +51,20 @@ formApp.controller("costController", function($scope, $compile) {
 	/* current date */
 	$scope.getDate = new Date;
 
+	/* clears all data */
 	$scope.reset = function() {
 	    $scope.order = {};
 	    $scope.order.serving = "six";
 	    $scope.order.quantity = 1;
 	    $scope.order.spice = { soy: false, ginger: false, wasabi: false, hot: false, mayo: false };
+
+	    /* 'orderform' is not available on the initiall call of reset() below */
 	    if ($scope.orderform) {
 		$scope.orderform.$setPristine();
 	    }
 	};
 
+	/* calculates the cost */
 	$scope.calculateTotal = function() {
 	    total = 0.0;
 
@@ -84,6 +88,21 @@ formApp.controller("costController", function($scope, $compile) {
 
 	    return total.toFixed(2);
 	};
+
+	/* submit the form */
+	$scope.submitForm = function() {
+	    console.log("-------------------- Going to submit: --------------------");
+	    console.log($scope.order);
+	    console.log("----------------------------------------------------------");
+
+	    $http.post("php/submit.php", $scope.order)
+	    .success(function(data) {
+		console.log(data);
+		})
+	    .error(function(data) {
+		console.log(data);
+		});
+	}
 
 	/* initialize */
 	$scope.reset();

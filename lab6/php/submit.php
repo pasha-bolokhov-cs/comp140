@@ -24,23 +24,37 @@
 date_default_timezone_set('America/Vancouver');
 
 
-/* The form element values are assigned to the PHP variables below.   */
+/* Get JSON data */
+$jsonData = file_get_contents("php://input");
+$data = json_decode($jsonData);
+$firstname = $data->firstname;
+$lastname = $data->lastname;
+$phone = $data->phone;
+$credit = $data->credit;
+$expirym = $data->expirym;
+$expiryy = $data->expiryy;
+$serving = $data->serving;
+$flavour = $data->flavour;
+$spice = $data->spice;
+$quantity = $data->quantity;
+$type = $data->type;
 
-$firstname  = $_REQUEST['firstname'];   /*   text box   */
-$lastname   = $_REQUEST['lastname' ];   /*   text box   */
-$phone      = $_REQUEST['phone'    ];   /*   radio      */
-$credit     = $_REQUEST['credit'   ];   /*   checkbox   */
-$expirym    = $_REQUEST['expirym'  ];   /*   select     */
-$expiryy    = $_REQUEST['expiryy'  ];   /*   select     */
-$serving    = $_REQUEST['serving'  ];
-$flavour    = $_REQUEST['flavour'  ];
-if (isset($_REQUEST[ 'spice' ])) {
-  $spice    = $_REQUEST['spice'    ];
-} else {
-  $spice = array();
-}
-$quantity   = $_REQUEST['quantity' ];
-$order      = $_REQUEST['order'    ];
+/* The form element values are assigned to the PHP variables below.   */
+//   $firstname  = $_REQUEST['firstname'];   /*   text box   */
+//   $lastname   = $_REQUEST['lastname' ];   /*   text box   */
+//   $phone      = $_REQUEST['phone'    ];   /*   radio      */
+//   $credit     = $_REQUEST['credit'   ];   /*   checkbox   */
+//   $expirym    = $_REQUEST['expirym'  ];   /*   select     */
+//   $expiryy    = $_REQUEST['expiryy'  ];   /*   select     */
+//   $serving    = $_REQUEST['serving'  ];
+//   $flavour    = $_REQUEST['flavour'  ];
+//   if (isset($_REQUEST[ 'spice' ])) {
+//     $spice    = $_REQUEST['spice'    ];
+//   } else {
+//     $spice = array();
+//   }
+//   $quantity   = $_REQUEST['quantity' ];
+//   $type      = $_REQUEST['type'    ];
 
 
 /* Information for using dates in PHP is at  http://ca3.php.net/date */
@@ -67,7 +81,7 @@ echo "First name is <span class=\"formval\">" . $firstname  . "</span><br />";
 if ($lastname)
   echo "Last name is <span class=\"formval\">"  . $lastname  . "</span><br />";
 
-if ($phone )
+if ($phone)
   echo "phone is <span class=\"formval\">" . $phone . "</span><br />";
 
 if ($credit)
@@ -95,7 +109,7 @@ if (count($spice) > 0) {
 
 echo "Quantity is <span class='formval'>" . $quantity    . "</span><br/>";
 
-echo "Order is <span class='formval'>" . $order  . "</span><br />";
+echo "Order is <span class='formval'>" . $type  . "</span><br />";
 
 
 /* 
