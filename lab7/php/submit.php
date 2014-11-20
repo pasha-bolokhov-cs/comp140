@@ -20,10 +20,72 @@ $type = $data->type;
 /* Get the date */
 $date = date('D j M Y G:i');
 
-/* Check if $firstname was not entered */
+/* Check if all data was supplied */
 if (empty($firstname)) {
   $response["success"] = 0;
   $response["error-reason"] = "first name was not supplied";
+  echo json_encode($response);
+  exit;
+}
+if (empty($lastname)) {
+  $response["success"] = 0;
+  $response["error-reason"] = "last name was not supplied";
+  echo json_encode($response);
+  exit;
+}
+if (empty($phone)) {
+  $response["success"] = 0;
+  $response["error-reason"] = "phone number was not supplied";
+  echo json_encode($response);
+  exit;
+}
+if (empty($credit)) {
+  $response["success"] = 0;
+  $response["error-reason"] = "credit card number was not supplied";
+  echo json_encode($response);
+  exit;
+}
+if (empty($expirym)) {
+  $response["success"] = 0;
+  $response["error-reason"] = "credit card expiry month was not supplied";
+  echo json_encode($response);
+  exit;
+}
+if (empty($expiryy)) {
+  $response["success"] = 0;
+  $response["error-reason"] = "credit card expiry year was not supplied";
+  echo json_encode($response);
+  exit;
+}
+if (empty($flavour)) {
+  $response["success"] = 0;
+  $response["error-reason"] = "flavour was not supplied";
+  echo json_encode($response);
+  exit;
+}
+if (empty($quantity)) {
+  $response["success"] = 0;
+  $response["error-reason"] = "quantity was not supplied";
+  echo json_encode($response);
+  exit;
+}
+if (empty($type)) {
+  $response["success"] = 0;
+  $response["error-reason"] = "pick-up type was not supplied";
+  echo json_encode($response);
+  exit;
+}
+
+
+/*
+ * Check credit card expiry
+ */
+$month = intval(date("m"));
+$year = intval(date("y"));
+if (($expiryy < $year) || (($expiryy == $year) && ($expirym < $month))) {
+  $response["success"] = 0;
+  $response["error-reason"] = "credit card expired";
+  echo json_encode($response);
   exit;
 }
 
@@ -36,6 +98,7 @@ if (empty($firstname)) {
 if (!$fp) {
   $response["success"] = 0;
   $response["error-reason"] = "could not access database";
+  echo json_encode($response);
   exit;
 }
 
@@ -51,13 +114,23 @@ $outputString =
   $serving    . "\t" .
   $flavour    . "\t";
 
+/* list spices with dashes */
 if (count($spice) > 0) {
+  $is_first = 1;
   foreach($spice as $key => $value) {
-    $outputString .= $value . "\t";
+    if ($value == 1) {
+      if (!$is_first) {
+	$outputString .= "-";
+      } else {
+	$is_first = 0;
+      }
+      $outputString .= $key;
     }
+  }
 } else {
-  $outputString .= "no-spices" . "\t";
+  $outputString .= "no-spices";
 }
+$outputString .= "\t";
 
 $outputString .= 
   $quantity   . "\t" .
@@ -66,7 +139,7 @@ $outputString .=
 
 $sha = hash("sha256", $outputString);
 
-$outputString .= "\t" . $sha;
+$outputString .= "\t" . $sha . "\n";
 
 fwrite($fp, $outputString);
 
