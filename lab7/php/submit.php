@@ -82,6 +82,12 @@ if (empty($type)) {
  */
 $month = intval(date("m"));
 $year = intval(date("y"));
+if (($expirym < 1) || ($expirym > 12)) {
+  $response["success"] = 0;
+  $response["error-reason"] = "invalid expiration month";
+  echo json_encode($response);
+  exit;
+}
 if (($expiryy < $year) || (($expiryy == $year) && ($expirym < $month))) {
   $response["success"] = 0;
   $response["error-reason"] = "credit card expired";
