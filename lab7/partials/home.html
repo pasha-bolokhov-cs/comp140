@@ -1,10 +1,11 @@
 <div id="data">
-	<p>Enjoy the best sushi on the west coast!</p>
-        <p>Hours:&nbsp;<span id="hours"> Monday to Saturday 12-8; Sunday 1-7</span></p>
-	<br>
-	<p> 
-		Location<br> 
-		<iframe src="https://www.google.com/maps/embed?pb=%211m18%211m12%211m3%211d10576.660072018572%212d-123.4164109%213d48.49172759999998%212m3%211f0%212f0%213f0%213m2%211i1024%212i768%214f13.1%213m3%211m2%211s0x548f72665a4824ff%3A0x65b73a0d168ead8c%212s4461+Interurban+Rd%2C+Victoria%2C+BC+V9E+2C1%215e0%213m2%211sen%212sca%214v1412891616139" style="border:0" frameborder="0" height="400" width="60%" id="map"></iframe>
-        </p>
-
+	<carousel interval="carInterval" class="col-sm-12" style="height: 30em;">
+	  <slide ng-repeat="slide in [1, 2, 3, 4, 5]">
+	    <img ng-src="images/sushi{{slide}}.jpg" style="margin: 0;">
+	    <div class="carousel-caption">
+	      <h4>Amazing Dish <strong>{{slide}}</strong></h4>
+	      <p>Enjoy the best sushi on the west coast!</p>
+	    </div>
+	  </slide>
+	</carousel>
 </div>

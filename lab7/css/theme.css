@@ -71,10 +71,12 @@ body {
 
 /* This is basically the container */
 #data { 
+/*
   border-width: 0;
   margin: 0;
   padding: 6em;
   overflow: hidden;
+*/
 }
 
 
@@ -112,10 +114,12 @@ a {
 }
 
 .orderform {
+/*
   font-size: 12pt;
   font-weight: normal;
   margin: 0;
   padding: 0;
+*/
 }
 
 label {

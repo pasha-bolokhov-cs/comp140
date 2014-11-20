@@ -28,9 +28,8 @@ app.config(['$routeProvider', function ($routeProvider) {
 /**
  * Controls all other Pages
  */
-app.controller('PageCtrl', function (/* $scope, $location, $http */) {
-  console.log("Page Controller reporting for duty.");
-
+app.controller('PageCtrl', function ($scope /* also: $location, $http */) {
+	$scope.carInterval = 8000;    /* msec */
 });
 
 
