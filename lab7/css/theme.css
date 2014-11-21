@@ -2,10 +2,14 @@
  * theme.css - Pavel A. Bolokhov
  */
 
+
 body {
   background: linear-gradient(to right, salmon, orchid);
 }
 
+#header {
+
+}
 
 #header h1 {
   text-align: center; color: yellow; font-size: 3em;
@@ -16,6 +20,8 @@ body {
 
 
 .ad {
+  padding: 0;
+  margin: 0;
   font-size: 21pt;
   height: 30em;
   font-family "Arial", sans-serif, inherit;
@@ -45,13 +51,23 @@ body {
 }
 
 .navbar {
+  border-width: 0;
+  border-radius: 0;
   background: linear-gradient(to right, pink, salmon);
+  margin-bottom: 0;    /* override Bootstrap */
+}
+
+.ng-view {
+  padding: 0;
 }
 
 #map { 
   vertical-align: text-top;
 }
 
+#data {
+  padding: 2em;
+}
 
 #data dt {
   font-size: 2em;
