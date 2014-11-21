@@ -29,7 +29,7 @@ app.config(['$routeProvider', function ($routeProvider) {
  * Controls all other Pages
  */
 app.controller('PageCtrl', function ($scope /* also: $location, $http */) {
-	$scope.carInterval = 8000;    /* msec */
+	$scope.carInterval = 5000;    /* msec */
 
 	/* Prepare messages */
 	$scope.enjoy = [
