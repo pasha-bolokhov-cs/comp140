@@ -30,6 +30,15 @@ app.config(['$routeProvider', function ($routeProvider) {
  */
 app.controller('PageCtrl', function ($scope /* also: $location, $http */) {
 	$scope.carInterval = 8000;    /* msec */
+
+	/* Prepare messages */
+	$scope.enjoy = [
+			"Enjoy the best sushi on the west coast!",
+			"Our cooks receive inspiration from the wild west coast nature!",
+			"Submerge yourself into the world of sushi!",
+			"We will open the life of Asia to you in just one bite!",
+			"Your local source of finest asian traditions right at your hand!"
+			];
 });
 
 
@@ -51,7 +60,7 @@ formApp.controller("costController", function($scope, $http) {
 	$scope.getDate = new Date;
 
 	/* clears all data */
-	$scope.reset = function() {
+	$scope.reset = function(removeAlerts) {
 	    $scope.order = {};
 	    $scope.order.serving = "six";
 	    $scope.order.quantity = 1;
@@ -60,6 +69,11 @@ formApp.controller("costController", function($scope, $http) {
 	    /* 'orderform' is not available on the initiall call of reset() below */
 	    if ($scope.orderform) {
 		$scope.orderform.$setPristine();
+	    }
+
+	    /* remove alerts if needed */
+	    if (removeAlerts) {
+		$scope.showReceipt = false;
 	    }
 	};
 
@@ -83,26 +97,34 @@ formApp.controller("costController", function($scope, $http) {
 	    total *= $scope.order.quantity;
 
 	    /* a 15% discount for pick-up */
-	    if ($scope.order.handin === "pickup") total *= (1.00 - 0.15);
+	    if ($scope.order.type === "pickup") total *= (1.00 - 0.15);
 
 	    return total.toFixed(2);
 	};
 
 	/* submit the form */
 	$scope.submitForm = function() {
-	    console.log("-------------------- Going to submit: --------------------");
-	    console.log($scope.order);
-	    console.log("----------------------------------------------------------");
-
 	    $http.post("php/submit.php", $scope.order)
 	    .success(function(data) {
-		console.log(data);
+		    if (data["success"] == 0) {
+			$scope.order.error = "Validation error: " + data["error-reason"];
+		    } else {
+			$scope.receipt = data["receipt"].substr(0, 20);
+			$scope.showReceipt = true;
+			$scope.reset(false);
+		    }
 		})
-	    .error(function(data) {
-		console.log(data);
+	    .error(function(data, status) {
+		    console.log(data);
+		    $scope.order.error = "Error accessing the server: " + status + ".";
 		});
 	}
 
+	/* close the receipt alert */
+	$scope.closeReceipt = function() {
+	    $scope.showReceipt = false;
+	}
+
 	/* initialize */
-	$scope.reset();
+	$scope.reset(false);
     });

@@ -1,11 +1,9 @@
-<div id="data">
-	<carousel interval="carInterval" class="col-xs-12" style="height: 30em;">
-	  <slide ng-repeat="slide in [1, 2, 3, 4, 5]">
-	    <img ng-src="images/sushi{{slide}}.jpg" style="margin: 0;">
-	    <div class="carousel-caption">
-	      <h4>Amazing Dish <strong>{{slide}}</strong></h4>
-	      <p>Enjoy the best sushi on the west coast!</p>
-	    </div>
-	  </slide>
-	</carousel>
-</div>
+<carousel interval="carInterval" class="col-xs-12" style="height: 20em;">
+  <slide ng-repeat="slide in [1, 2, 3, 4, 5]">
+    <img ng-src="images/sushi{{slide}}.jpg" style="margin: 0;">
+    <div class="carousel-caption">
+      <h4>Amazing Dish <strong>{{slide}}</strong></h4>
+      <p>{{ enjoy[slide-1] }}</p>
+    </div>
+  </slide>
+</carousel>
