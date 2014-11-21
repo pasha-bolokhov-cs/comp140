@@ -128,10 +128,14 @@
 	          <!-- order type -->
                   <fieldset>
                       <legend>Select order type</legend>
-                      <input type="radio" name="order" value="pickup" id="pickup" ng-model="order.type" required>
-                      <label>Pick up</label>
-                      <input type="radio" name="order" value="delivery" id="delivery" ng-model="order.type" required>
-                      <label>Delivery</label>
+                      <label class="col-xs-12 col-sm-4">
+			<input type="radio" name="order" value="pickup" id="pickup" ng-model="order.type" required>
+			Pick up
+		      </label>
+                      <label class="col-xs-12 col-sm-4">
+			<input type="radio" name="order" value="delivery" id="delivery" ng-model="order.type" required>
+			Delivery
+		      </label>
                   </fieldset>
 	          <br/>
                 </div>

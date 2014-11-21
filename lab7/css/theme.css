@@ -3,18 +3,9 @@
  */
 
 body {
-  border-width: 0;
-  margin: 0;
-  padding: 0;
   background: linear-gradient(to right, salmon, orchid);
 }
 
-
-#header {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
 
 #header h1 {
   text-align: center; color: yellow; font-size: 3em;
@@ -27,7 +18,6 @@ body {
 .ad {
   font-size: 21pt;
   height: 30em;
-  margin: 0;
   font-family "Arial", sans-serif, inherit;
   background-image: url(../images/ad.jpg);
 }
@@ -47,7 +37,7 @@ body {
   background: -moz-linear-gradient(right, pink, salmon, orchid);   /* For Firefox 3.6 to 15 */
   filter: progid:DXImageTransform.Microsoft.gradient( 
 	startColorstr='pink', endColorstr='salmon',GradientType=0 );
-  padding: 0.5em;
+  padding: 0.5em 0 0.5em 0;
 }
 
 #hours {
@@ -55,30 +45,8 @@ body {
 }
 
 .navbar {
-  padding: 0;
-  margin: 0;
-  border-width: 0;
-  border-radius: 0;
   background: linear-gradient(to right, pink, salmon);
 }
-
-
-.ng-scope {
-  margin: 0;
-  padding: 0;
-  border-width: 0;
-}
-
-/* This is basically the container */
-#data { 
-/*
-  border-width: 0;
-  margin: 0;
-  padding: 6em;
-  overflow: hidden;
-*/
-}
-
 
 #map { 
   vertical-align: text-top;
@@ -97,9 +65,8 @@ a {
 
 .navbar div {
   text-align: center;
-  padding: 1em;
+  padding: 1em 0 1em 0;
 }
-
 
 .navbar a:visited {
   color: blue;
@@ -111,23 +78,4 @@ a {
 
 .navbar a:hover { 
   text-decoration: underline;
-}
-
-.orderform {
-/*
-  font-size: 12pt;
-  font-weight: normal;
-  margin: 0;
-  padding: 0;
-*/
-}
-
-label {
-  font-weight: normal;
-  margin: 0 2em 0 0;
-}
-
-
-.flavour {
-  padding-right: 0;
 }
