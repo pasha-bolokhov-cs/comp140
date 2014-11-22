@@ -30,6 +30,7 @@ app.config(['$routeProvider', function ($routeProvider) {
  */
 app.controller('PageCtrl', function ($scope /* also: $location, $http */) {
 	$scope.carInterval = 5000;    /* msec */
+	$scope.slides = [1, 2, 3, 4, 5, 6, 7, 8];
 
 	/* Prepare messages */
 	$scope.enjoy = [
@@ -37,7 +38,10 @@ app.controller('PageCtrl', function ($scope /* also: $location, $http */) {
 			"Our cooks receive inspiration from the wild west coast nature!",
 			"Submerge yourself into the world of sushi!",
 			"We will open the life of Asia to you in just one bite!",
-			"Your local source of finest asian traditions right at your hand!"
+			"Your local source of finest asian traditions right at your hand!",
+			"Unite with the culture of thousands years of perfection just over lunch!",
+			"Bring colours to your life through our vibrant selection!",
+			"Feel our affection for what we make!"
 			];
 });
 
