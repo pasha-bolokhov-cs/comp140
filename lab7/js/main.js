@@ -34,12 +34,12 @@ app.controller('PageCtrl', function ($scope /* also: $location, $http */) {
 
 	/* Prepare messages */
 	$scope.enjoy = [
-			"Enjoy the best sushi on the west coast!",
-			"Our cooks receive inspiration from the wild west coast nature!",
+			"Enjoy the most deluxe sushi on the west coast!",
+			"Our cooks take inspiration from the wild of the west coast nature!",
 			"Submerge yourself into the world of sushi!",
-			"We will open the life of Asia to you in just one bite!",
-			"Your local source of finest asian traditions right at your hand!",
-			"Unite with the culture of thousands years of perfection just over lunch!",
+			"We will open the flavour of Asia to you in just one bite!",
+			"Your local source of finest asian traditions right on your the!",
+			"Touch with the culture of thousands years of sushi crafting perfection - just over lunch!",
 			"Bring colours to your life through our vibrant selection!",
 			"Feel our affection for what we make!"
 			];
