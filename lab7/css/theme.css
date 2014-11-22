@@ -7,8 +7,13 @@ body {
   background: linear-gradient(to right, salmon, orchid);
 }
 
-#header {
-
+#header{
+  background: linear-gradient(to right, pink, salmon, orchid);
+  background: -webkit-linear-gradient(left, pink, salmon, orchid); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, pink, salmon, orchid);     /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, pink, salmon, orchid);   /* For Firefox 3.6 to 15 */
+  filter: progid:DXImageTransform.Microsoft.gradient( 
+	startColorstr='pink', endColorstr='salmon',GradientType=0 );
 }
 
 #header h1 {
@@ -16,8 +21,8 @@ body {
   margin: 0;
   font-family: "Times New Roman", serif, inherit;
   font-weight: bold;
+  padding: 0.5em 0 0.5em 0;
 }
-
 
 .ad {
   padding: 0;
@@ -33,17 +38,6 @@ body {
   padding: 1em;
   color: Gold;
   vertical-align: middle;
-}
-
-
-#palace { 
-  background: linear-gradient(to right, pink, salmon, orchid);
-  background: -webkit-linear-gradient(left, pink, salmon, orchid); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, pink, salmon, orchid);     /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, pink, salmon, orchid);   /* For Firefox 3.6 to 15 */
-  filter: progid:DXImageTransform.Microsoft.gradient( 
-	startColorstr='pink', endColorstr='salmon',GradientType=0 );
-  padding: 0.5em 0 0.5em 0;
 }
 
 #hours {
@@ -69,33 +63,30 @@ body {
   padding: 2em;
 }
 
+
 #data dt {
   font-size: 2em;
 }
+
 
 #main-view {
   margin: 0;
   padding: 0;
 }
 
-a {
+
+.navbar a {
   font-size: 1.4em; 
   line-height: 2em;
 }
+
 
 .navbar div {
   text-align: center;
   padding: 1em 0 1em 0;
 }
 
+
 .navbar a:visited {
   color: blue;
-}
-
-.navbar a:link {
-  text-decoration: none;
-}
-
-.navbar a:hover { 
-  text-decoration: underline;
 }
