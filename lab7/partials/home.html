@@ -4,11 +4,17 @@
       <slide ng-repeat="slide in slides">
         <img ng-src="images/sushi{{slide}}.jpg" style="margin: 0;">
         <div class="carousel-caption">
-          <h4>Amazing Dish <strong>{{slide}}</strong></h4>
-          <p>{{ enjoy[slide-1] }}</p>
+          <h2>Amazing Dish <strong>{{slide}}</strong></h2>
+          <p class="lead">{{ enjoy[slide-1] }}</p>
         </div>
       </slide>
     </carousel>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <br>
+      <br>
+    </div>
   </div>
   <div class="jumbotron row">
     <div class="col-xs-12">
@@ -16,7 +22,7 @@
       <p>Discover your most favourite sushi destination!</p>
       <button class="btn btn-primary btn-lg" 
     	  popover-placement="right" popover="Ha-ha! Not implemented yet">
-	Sign-up for our weekly flyer
+	<span class="glyphicon glyphicon-pencil"></span> Sign-up for our weekly flyer
       </button>
     </div>
   </div>
