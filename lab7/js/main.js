@@ -37,7 +37,7 @@ app.controller('PageCtrl', function ($scope /* also: $location, $http */) {
 	/* Prepare messages */
 	$scope.enjoy = [
 			"Enjoy the most deluxe sushi on the west coast!",
-			"Our cooks take inspiration from the wild of the west coast nature!",
+			"Our cooks source their inspiration from the wild west coast nature!",
 			"Submerge yourself into the world of sushi!",
 			"We will open the flavour of Asia to you in just one bite!",
 			"Your local source of finest asian traditions right on your the!",
@@ -61,7 +61,7 @@ mapsApp.controller("mapsController", function($scope, uiGmapGoogleMapApi) {
 	// Do stuff with your $scope.
 	// Note: Some of the directives require at least something to be defined originally!
 	// e.g. $scope.markers = []
-	$scope.map = { center: { latitude: 48.49172759999998, longitude: -123.4164109 }, zoom: 8 };
+	$scope.map = { center: { latitude: 48.49172759999998, longitude: -123.4164109 }, zoom: 12 };
 
 	console.log("mapsApp controller reporting for duty");
 
