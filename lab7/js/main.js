@@ -5,7 +5,8 @@
 /**
  * Main AngularJS Web Application
  */
-var app = angular.module('webApp', ['ui.bootstrap', 'ngRoute', 'formApp']);
+var app = angular.module('webApp', ['ui.bootstrap', 'ngRoute', 'mapsApp', 'formApp']);
+
 
 /**
  * Configure the Routes
@@ -13,17 +14,18 @@ var app = angular.module('webApp', ['ui.bootstrap', 'ngRoute', 'formApp']);
 app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
     // Home
-    .when("/", {templateUrl: "partials/home.html", controller: "PageCtrl"})
-    .when("/home", {templateUrl: "partials/home.html", controller: "PageCtrl"})
+    .when("/",            {templateUrl: "partials/home.html", controller: "PageCtrl"})
+    .when("/home",        {templateUrl: "partials/home.html", controller: "PageCtrl"})
     // Pages
-    .when("/about", {templateUrl: "partials/about.html", controller: "PageCtrl"})
-    .when("/menu", {templateUrl: "partials/menu.html", controller: "PageCtrl"})
-    .when("/specials", {templateUrl: "partials/specials.html", controller: "PageCtrl"})
-    .when("/order", {templateUrl: "partials/order.html", controller: "PageCtrl"})
+    .when("/about",       {templateUrl: "partials/about.html", controller: "PageCtrl"})
+    .when("/menu",        {templateUrl: "partials/menu.html", controller: "PageCtrl"})
+    .when("/specials",    {templateUrl: "partials/specials.html", controller: "PageCtrl"})
+    .when("/order",       {templateUrl: "partials/order.html", controller: "PageCtrl"})
     .when("/opportunity", {templateUrl: "partials/opportunity.html", controller: "PageCtrl"})
     // else 404
-    .otherwise("/404", {templateUrl: "partials/404.html", controller: "PageCtrl"});
+    .otherwise("/404",    {templateUrl: "partials/404.html", controller: "PageCtrl"});
 }]);
+
 
 /**
  * Controls all other Pages
@@ -44,6 +46,43 @@ app.controller('PageCtrl', function ($scope /* also: $location, $http */) {
 			"Feel our affection for what we make!"
 			];
 });
+
+
+/*
+ * Google Maps
+ */
+var mapsApp = angular.module('mapsApp', ['uiGmapgoogle-maps']);
+
+
+/**
+ * Google Maps Controller
+ */
+mapsApp.controller("mapsController", function($scope, uiGmapGoogleMapApi) {
+	// Do stuff with your $scope.
+	// Note: Some of the directives require at least something to be defined originally!
+	// e.g. $scope.markers = []
+	$scope.map = { center: { latitude: 48.49172759999998, longitude: -123.4164109 }, zoom: 8 };
+
+	console.log("mapsApp controller reporting for duty");
+
+	// uiGmapGoogleMapApi is a promise.
+	// The "then" callback function provides the google.maps object.
+	uiGmapGoogleMapApi.then(function(maps) {
+
+	    });
+    });
+
+
+/**
+ * Configure Google Maps
+ */
+mapsApp.config(function(uiGmapGoogleMapApiProvider) {
+	       uiGmapGoogleMapApiProvider.configure({
+		       //    key: 'your api key',
+		       v: '3.17',
+		       libraries: 'weather,geometry,visualization'
+	       });
+    });
 
 
 /*
@@ -113,7 +152,7 @@ formApp.controller("costController", function($scope, $http) {
 		    if (data["success"] == 0) {
 			$scope.order.error = "Validation error: " + data["error-reason"];
 		    } else {
-			$scope.receipt = data["receipt"].substr(0, 20);
+			$scope.receipt = data["receipt"].substr(0, 20);    /* take the first 20 symbols of 'sha-256' */
 			$scope.showReceipt = true;
 			$scope.reset(false);
 		    }
