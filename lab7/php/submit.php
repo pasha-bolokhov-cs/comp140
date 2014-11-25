@@ -154,10 +154,10 @@ $outputString .= "\t";
 
 $outputString .= 
   $quantity   . "\t" .
-  $type       . "\t" .
-  $date;
+  $type       . "\t";
 
 $sha = hash("sha256", $outputString);
+$sha = substr($sha, 0, 20);            /* Take only first 20 numbers from 'sha-256' */
 
 $outputString .= "\t" . $sha . "\n";
 

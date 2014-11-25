@@ -3,16 +3,16 @@
 
   <!-- transaction status -->
   <div class="row">
-    <div class="col-xs-12" ng-show="!order.error && !showReceipt"><!-- place holder when no error-->
+    <div class="col-xs-12" ng-show="!showAlerts"><!-- place holder when no error-->
       <alert style="visibility: hidden;">
 	PLACEHOLDER CONTENT - SHOULD NOT BE VISIBLE
       </alert>
     </div>
-    <alert class="col-xs-12 col-md-8 col-md-offset-2 text-center" type="danger" ng-show="order.error"
-    	   close="order.error = undefined;">{{ order.error }}</alert>
-    <alert class="col-xs-12 col-md-8 col-md-offset-2 text-center" type="success" ng-show="showReceipt && !order.error"
-    	   close="showReceipt = false;">
-      Order processed. Your receipt number: {{ receipt }}.
+    <alert class="col-xs-12 col-md-8 col-md-offset-2 text-center" type="danger" ng-show="showAlerts && order.error"
+    	   close="showAlerts = false;">{{ order.error }}</alert>
+    <alert class="col-xs-12 col-md-8 col-md-offset-2 text-center" type="success" ng-show="showAlerts && !order.error"
+    	   close="showAlerts = false;">
+      Order processed. Your receipt number: <a href="php/orders.txt">{{ receipt }}</a>.
     </alert>
   </div>
 

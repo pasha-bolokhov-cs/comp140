@@ -144,7 +144,7 @@ formApp.controller("costController", function($scope, $http) {
 
 	    /* remove alerts if needed */
 	    if (removeAlerts) {
-		$scope.showReceipt = false;
+		$scope.showAlerts = false;
 	    }
 	};
 
@@ -180,8 +180,7 @@ formApp.controller("costController", function($scope, $http) {
 		    if (data["success"] == 0) {
 			$scope.order.error = "Validation error: " + data["error-reason"];
 		    } else {
-			$scope.receipt = data["receipt"].substr(0, 20);    /* take the first 20 symbols of 'sha-256' */
-			$scope.showReceipt = true;
+			$scope.receipt = data["receipt"];
 			$scope.reset(false);
 		    }
 		})
@@ -189,15 +188,13 @@ formApp.controller("costController", function($scope, $http) {
 		    console.log(data);
 		    $scope.order.error = "Error accessing the server: " + status + ".";
 		});
-	}
 
-	/* close the receipt alert */
-	$scope.closeReceipt = function() {
-	    $scope.showReceipt = false;
+            /* need to show the status of request in either case */
+            $scope.showAlerts = true;
 	}
 
 	/* initialize */
-	$scope.reset(false);
+	$scope.reset(true);
 
 	/* pagination */
 	$scope.numPages = 3;
