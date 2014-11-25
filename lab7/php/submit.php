@@ -95,6 +95,20 @@ if (($expiryy < $year) || (($expiryy == $year) && ($expirym < $month))) {
   exit;
 }
 
+/*
+ * Check the name of the user
+ */
+$name = "$firstname $lastname";
+$cmd = "grep \":" . $name . ":\" /etc/passwd >/dev/null";
+exec($cmd, $output, $exec_return);
+if ($exec_return != 0) {
+  $response["success"] = 0;
+  $response["error-reason"] = "\"$name\" not a CST user";
+  echo json_encode($response);
+  exit;
+}
+
+
 /* 
  * Write the information to the file 'orders.txt', which should have
  * write permission to "others".  First check if the orders file can

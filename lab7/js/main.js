@@ -198,4 +198,8 @@ formApp.controller("costController", function($scope, $http) {
 
 	/* initialize */
 	$scope.reset(false);
+
+	/* pagination */
+	$scope.numPages = 3;
+	$scope.currentPage = 1;
     });
