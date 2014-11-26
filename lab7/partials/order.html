@@ -157,10 +157,12 @@
           </fieldset>
 
 	  <!-- delivery time -->
+	  <br>
 	  <fieldset>
 	    <legend>Choose pick-up time</legend>
 	    <div class="col-xs-12 col-sm-4">
-	      <timepicker ng-model="order.pickupTime" minute-step="mstep" show-meridian="true"></timepicker>
+	      <timepicker ng-model="order.pickupTime" minute-step="mstep" 
+			  show-meridian="true" readonly-input="true"></timepicker>
 	    </div>
 	  </fieldset>
 </div>
