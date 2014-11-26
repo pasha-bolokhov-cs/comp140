@@ -138,14 +138,11 @@ formApp.controller("costController", function($scope, $http) {
 	    $scope.order.serving = "six";
 	    $scope.order.quantity = 1;
 	    $scope.order.spice = { soy: false, ginger: false, wasabi: false, hot: false, mayo: false };
-	    currTime = new Date;
-	    min = currTime.getMinutes();
-	    if (min % 15 == 0)
-		min += 15;
-	    else
-		min = (Math.floor(currTime.getMinutes() / 15) + 1) * 15;
-	    currTime.setMinutes(min);
-	    $scope.order.pickupTime = currTime;
+	    $scope.minTime = new Date;
+	    min = $scope.minTime.getMinutes();
+	    min = (Math.floor(min / 15) + 1) * 15;
+	    $scope.minTime.setMinutes(min);
+	    $scope.order.pickupTime = $scope.minTime;
 
 	    /* 'orderform' is not available on the initiall call of reset() below */
 	    if ($scope.orderform) {

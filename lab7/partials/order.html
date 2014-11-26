@@ -22,11 +22,18 @@
     <form novalidate class="orderform col-xs-12 col-md-10 col-md-offset-1" name="orderform" id="orderform"
           ng-submit="submitForm()">
       <div class="row">
+
         <!------------------->
+        <!--               -->
         <!-- Order details -->
+        <!--               -->
         <!------------------->
-        <div class="col-xs-12 col-md-8">
-<div ng-show="currentPage == 1">
+
+	<!-- ******** --->
+	<!--  Page 1  --->
+	<!-- ******** --->
+	<tabset class="col-xs-12 col-md-8 col-md-offset-2">
+        <tab heading="Flavour" active="currentPage == 1">
           
           <fieldset>
             <legend>Select Serving</legend>
@@ -73,8 +80,7 @@
             </div>
           </fieldset>
           <br/>	        
-</div>
-<div ng-show="currentPage == 2">	  
+
           <!-- select a spice -->
           <fieldset>
             <legend>Select a spice</legend>
@@ -124,7 +130,13 @@
     	    </div>
           </fieldset>
           <br/>	        
-          
+	</tab>
+
+
+	<!-- ******** --->
+	<!--  Page 2  --->
+	<!-- ******** --->
+        <tab heading="Pick-up" active="currentPage == 2">
     	  <!-- quantity -->
           <fieldset>
             <legend>Quantity</legend>
@@ -159,21 +171,26 @@
 	  <!-- delivery time -->
 	  <br>
 	  <fieldset>
-	    <legend>Choose pick-up time</legend>
+	    <legend>Choose delivery time</legend>
 	    <div class="col-xs-12 col-sm-4">
-	      <timepicker ng-model="order.pickupTime" minute-step="mstep" 
+	      <timepicker ng-model="order.pickupTime" minute-step="mstep"
 			  show-meridian="true" readonly-input="true"></timepicker>
 	    </div>
 	  </fieldset>
-</div>
           <br/>
-        </div>
+        </tab>
       
     
     	<!----------------------------->
+	<!--                         -->
     	<!-- Credit Card information -->
+	<!--                         -->
     	<!----------------------------->
-        <div class="col-xs-12 col-md-4">
+
+	<!-- ******** --->
+	<!--  Page 3  --->
+	<!-- ******** --->
+        <tab heading="Payment" active="currentPage == 3">
     	  <legend>Payment details</legend>
     	  <!-- fist and last name -->
           <input type="text" name="firstname" class="form-control" placeholder="Your First Name" ng-model="order.firstname" required>
@@ -244,7 +261,8 @@
               </div>
             </div>
     	  </div>
-        </div>
+        </tab>
+	</tabset>
       </div>
     </form>
   </div>
