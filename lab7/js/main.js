@@ -127,15 +127,18 @@ formApp.controller("costController", function($scope, $http) {
 	    "calamari":   { "six": 9.0, "eight": 12.0, "ten": 14.0 }
 	};
 
-	/* current date */
-	$scope.getDate = new Date;
+	/* Minute step for Time Picker */
+	$scope.mstep = 15;
 
 	/* clears all data */
 	$scope.reset = function(removeAlerts) {
+
+	    /* reset order details */
 	    $scope.order = {};
 	    $scope.order.serving = "six";
 	    $scope.order.quantity = 1;
 	    $scope.order.spice = { soy: false, ginger: false, wasabi: false, hot: false, mayo: false };
+	    $scope.order.pickupTime = new Date;
 
 	    /* 'orderform' is not available on the initiall call of reset() below */
 	    if ($scope.orderform) {
