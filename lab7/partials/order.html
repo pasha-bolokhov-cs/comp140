@@ -32,9 +32,11 @@
 	<!-- ******** --->
 	<!--  Page 1  --->
 	<!-- ******** --->
-	<tabset class="col-xs-12 col-md-8 col-md-offset-2">
-        <tab heading="Flavour" active="currentPage == 1">
-          
+	<tabset class="col-xs-12 col-md-6 col-md-offset-3">
+        <tab heading="Flavour" active="currentPage == 1" ng-click="currentPage = 1;">
+	  <br>
+        
+	  <!-- select serving -->
           <fieldset>
             <legend>Select Serving</legend>
     	      <div class="row">
@@ -136,7 +138,9 @@
 	<!-- ******** --->
 	<!--  Page 2  --->
 	<!-- ******** --->
-        <tab heading="Pick-up" active="currentPage == 2">
+        <tab heading="Pick-up" active="currentPage == 2" ng-click="currentPage = 2">
+	  <br>
+
     	  <!-- quantity -->
           <fieldset>
             <legend>Quantity</legend>
@@ -190,7 +194,8 @@
 	<!-- ******** --->
 	<!--  Page 3  --->
 	<!-- ******** --->
-        <tab heading="Payment" active="currentPage == 3">
+        <tab heading="Payment" active="currentPage == 3" ng-click="currentPage = 3;">
+	  <br>
     	  <legend>Payment details</legend>
     	  <!-- fist and last name -->
           <input type="text" name="firstname" class="form-control" placeholder="Your First Name" ng-model="order.firstname" required>
