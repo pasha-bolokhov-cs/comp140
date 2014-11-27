@@ -1,23 +1,22 @@
 <div class="container-fluid">
 
-  <!-- 'Order Now' jumbotron -->
-  <div class="jumbotron row"  style="z-index: 20; position: absolute; background: transparent; width: 100%; color: white;">
-    <div class="col-xs-12 text-center">
-      <br>
-      <br>
-      <br>
-      <h1>Sushi Palace</h1>
-      <p>Choose from our exquisite menu</p>
-      <button class="btn btn-primary btn-lg"
-	      ng-click="openOrderModal()">
-	<span class="glyphicon glyphicon-edit">&nbsp;</span>Order Now
-      </button>
-    </div>
-  </div>
-
   <!-- Carousel -->
   <div class="row">
     <carousel interval="carInterval" class="col-xs-12" style="padding: 0;">
+
+      <!-- 'Order Now' jumbotron -->
+      <div class="row jumbotron text-center order-jumbotron">
+        <div class="col-xs-12">
+          <h1>Sushi Palace</h1>
+	  <p>Discover your most favourite sushi destination</p>
+          <button class="btn btn-primary btn-lg"
+    	      ng-click="openOrderModal()">
+    	<span class="glyphicon glyphicon-edit">&nbsp;</span>Order Now
+          </button>
+        </div>
+      </div>
+
+      <!-- Slides -->
       <slide ng-repeat="slide in slides">
         <img ng-src="images/sushi{{slide}}.jpg" style="margin: 0;">
         <div class="carousel-caption">
@@ -40,7 +39,7 @@
   <div class="jumbotron row">
     <div class="col-xs-12">
       <h1 >Welcome!</h1>
-      <p>Discover your most favourite sushi destination!</p>
+      <p>Don't feel left out on our greatest deals!</p>
       <button class="btn btn-primary btn-lg" 
     	  popover-placement="right" popover="Ha-ha! Not implemented yet">
 	<span class="glyphicon glyphicon-pencil"></span> Sign-up for our weekly flyer

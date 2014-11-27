@@ -8,6 +8,20 @@ body {
 }
 
 
+#data {
+  padding: 2em;
+}
+
+
+#main-view {
+  margin: 0;
+  padding: 0;
+}
+
+
+/*
+ * Header
+ */
 #header{
   margin: 0;
   background: linear-gradient(to right, pink, salmon, orchid);
@@ -24,6 +38,9 @@ body {
 }
 
 
+/*
+ * Google Maps
+ */
 #maps-panel {
   padding: 0;
 }
@@ -57,32 +74,19 @@ body {
 }
 
 
-.navbar {
-  border-width: 0;
-  border-radius: 0;
-  background: linear-gradient(to right, pink, salmon);
-  margin-bottom: 0;    /* override Bootstrap */
-}
-
-
 .angular-google-map-container { 
     height: 400px;
 }
 
 
-#data {
-  padding: 2em;
-}
-
-
-#data dt {
-  font-size: 2em;
-}
-
-
-#main-view {
-  margin: 0;
-  padding: 0;
+/*
+ * Navigation bar
+ */
+.navbar {
+  border-width: 0;
+  border-radius: 0;
+  background: linear-gradient(to right, pink, salmon);
+  margin-bottom: 0;    /* override Bootstrap */
 }
 
 
@@ -99,4 +103,20 @@ body {
 
 .navbar a:visited {
   color: blue;
+}
+
+/*
+ * Carousel
+ */
+.carousel-control {
+    z-index: 20;
+}
+
+.order-jumbotron {
+  z-index: 10;        /* yield to 'carousel-control' */
+  position: absolute;
+  top: 30%;
+  background: transparent;
+  color: white;
+  width: 100%;
 }

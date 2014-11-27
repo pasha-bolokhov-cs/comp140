@@ -45,7 +45,7 @@ app.controller('PageCtrl', function ($scope, $modal /* also: $location, $http */
 	$scope.enjoy = [
 			"Enjoy the most deluxe sushi on the west coast!",
 			"Our cooks source their inspiration from the wild west coast nature!",
-			"Submerge yourself into the world of sushi!",
+			"Immerse yourself into the world of sushi!",
 			"Open the flavour of Asia in just one bite!",
 			"Your local source of finest asian traditions right at your hand!",
 			"Touch with the culture of thousands years of sushi crafting perfection - just over lunch!",

@@ -17,6 +17,12 @@
     </alert>
   </div>
 
+  
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <p>Current Page: {{ currentPage }}</p>
+    </div>
+  </div>
 
   <!-- the row of the form -->
   <div class="row">
@@ -34,7 +40,7 @@
 	<!--  Page 1  --->
 	<!-- ******** --->
 	<tabset class="col-xs-12">
-        <tab heading="Flavour" active="currentPage == 1" ng-click="currentPage = 1;">
+        <tab heading="Flavour" active="currentPage == 1" ng-click="orderTabClick(1)">
 	  <br>
         
 	  <!-- select serving -->
