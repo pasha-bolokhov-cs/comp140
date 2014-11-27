@@ -20,7 +20,7 @@
 
   <!-- the row of the form -->
   <div class="row">
-    <form novalidate class="orderform col-xs-12 col-md-10 col-md-offset-1" name="orderform" id="orderform"
+    <form novalidate class="orderform col-xs-12" name="orderform" id="orderform"
           ng-submit="submitForm()">
       <div class="row">
 
@@ -33,7 +33,7 @@
 	<!-- ******** --->
 	<!--  Page 1  --->
 	<!-- ******** --->
-	<tabset class="col-xs-12 col-md-8 col-md-offset-2">
+	<tabset class="col-xs-12">
         <tab heading="Flavour" active="currentPage == 1" ng-click="currentPage = 1;">
 	  <br>
         
@@ -275,7 +275,7 @@
 
   <!-- pagination buttons -->
   <div class="row">
-    <div class="col-xs-12 col-md-10 col-md-offset-1">
+    <div class="col-xs-12">
       <pager align="true" num-pages="numPages" ng-model="currentPage" total-items="30"></pager>
     </div>
   </div>

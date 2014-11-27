@@ -1,8 +1,22 @@
-
 <div class="container-fluid">
+
+  <!-- 'Order Now' jumbotron -->
+  <div class="jumbotron row"  style="z-index: 20; position: absolute; background: transparent; width: 100%; color: white;">
+    <div class="col-xs-12 text-center">
+      <br>
+      <br>
+      <br>
+      <h1>Sushi Palace</h1>
+      <p>Choose from our exquisite menu</p>
+      <button class="btn btn-primary btn-lg"
+	      ng-click="openOrderModal()" data-animation="am-fade-and-scale">
+	<span class="glyphicon glyphicon-edit">&nbsp;</span>Order Now
+      </button>
+    </div>
+  </div>
+
+  <!-- Carousel -->
   <div class="row">
-	<button class="btn btn-primary btn-lg" style="z-index: 9999;" 
-		ng-click="openOrderModal()" data-animation="am-fade-and-scale">Order Now</button>
     <carousel interval="carInterval" class="col-xs-12" style="padding: 0;">
       <slide ng-repeat="slide in slides">
         <img ng-src="images/sushi{{slide}}.jpg" style="margin: 0;">
@@ -13,12 +27,16 @@
       </slide>
     </carousel>
   </div>
+
+  <!-- some spacing -->
   <div class="row">
     <div class="col-xs-12">
       <br>
       <br>
     </div>
   </div>
+
+  <!-- Welcome jumbotron -->
   <div class="jumbotron row">
     <div class="col-xs-12">
       <h1 >Welcome!</h1>
