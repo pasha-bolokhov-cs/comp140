@@ -32,9 +32,17 @@ app.config(['$routeProvider', function ($routeProvider) {
 /**
  * Controls all other Pages
  */
-app.controller('PageCtrl', function ($scope /* also: $location, $http */) {
+app.controller('PageCtrl', function ($scope, $modal /* also: $location, $http */) {
 	$scope.carInterval = 5000;    /* msec */
 	$scope.slides = [1, 2, 3, 4, 5, 6, 7, 8];
+
+	/* function which opens the "Order Now" modal */
+	$scope.openOrderModal = function() {
+	    console.log("openOrderModal(): on enter");
+	    var modal = $modal.open({
+		    templateUrl: 'partials/order.html'
+		});
+	}
 
 	/* Prepare messages */
 	$scope.enjoy = [

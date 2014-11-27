@@ -1,5 +1,8 @@
+
 <div class="container-fluid">
   <div class="row">
+	<button class="btn btn-primary btn-lg" style="z-index: 9999;" 
+		ng-click="openOrderModal()" data-animation="am-fade-and-scale">Order Now</button>
     <carousel interval="carInterval" class="col-xs-12" style="padding: 0;">
       <slide ng-repeat="slide in slides">
         <img ng-src="images/sushi{{slide}}.jpg" style="margin: 0;">
