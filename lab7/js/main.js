@@ -16,26 +16,26 @@ var app = angular.module('webApp', ['ui.bootstrap', 'ngRoute', 'mapsApp']);
 app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
     // Home
-    .when("/",            {templateUrl: "partials/home.html", controller: "PageCtrl"})
-    .when("/home",        {templateUrl: "partials/home.html", controller: "PageCtrl"})
+    .when("/",            {templateUrl: "partials/home.html", controller: "PageController"})
+    .when("/home",        {templateUrl: "partials/home.html", controller: "PageController"})
     // Pages
-    .when("/about",       {templateUrl: "partials/about.html", controller: "PageCtrl"})
-    .when("/menu",        {templateUrl: "partials/menu.html", controller: "PageCtrl"})
+    .when("/about",       {templateUrl: "partials/about.html", controller: "PageController"})
+    .when("/menu",        {templateUrl: "partials/menu.html", controller: "PageController"})
     // else 404
-    .otherwise("/404",    {templateUrl: "partials/404.html", controller: "PageCtrl"});
+    .otherwise("/404",    {templateUrl: "partials/404.html", controller: "PageController"});
 }]);
 
 
 /**
  * Controls all other Pages
  */
-app.controller('PageCtrl', function ($scope, $modal /* also: $location, $http */) {
+app.controller('PageController', function ($scope, $modal /* also: $location, $http */) {
 	$scope.carInterval = 5000;    /* msec */
 	$scope.slides = [1, 2, 3, 4, 5, 6, 7, 8];
 
 	/* function which opens the "Order Now" modal */
 	$scope.openOrderModal = function() {
-	    console.log("openOrderModal(): on enter");
+	    console.log("openOrderModal: on enter");
 	    var modal = $modal.open({
 		    templateUrl: 'partials/order.html',
 		    controller: 'costController'
@@ -53,6 +53,16 @@ app.controller('PageCtrl', function ($scope, $modal /* also: $location, $http */
 			"Bring colours to your life through our vibrant selection!",
 			"Feel our affection for what we make!"
 			];
+
+
+	/* set a cookie */
+	var cookieName = "countCookie";
+	$scope.cookieValue = $.cookie(cookieName);
+	if ($scope.cookieValue == null || isNaN($scope.cookieValue)) {
+	    $scope.cookieValue = 0;
+	}
+	$scope.cookieValue = parseInt($scope.cookieValue);
+	$.cookie(cookieName, ++$scope.cookieValue, { expires: 7 }, { path: "/" });
 });
 
 
@@ -120,16 +130,14 @@ mapsApp.config(function(uiGmapGoogleMapApiProvider) {
 
 
 /*
- * Order Form application
+ * Order Form Modal Controller
  */
 app.controller("costController", function($scope, $modalInstance, $http) {
 
 	console.log("costController: on enter");
 
 	$scope.orderTabClick = function(page) {
-	    console.log("orderTabClick: got page = ", page);
-	    currentPage = page;
-	    $scope.$apply();
+	    $scope.currentPage = page;
 	};
 
 	/* initialize the price table */
