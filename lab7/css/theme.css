@@ -19,6 +19,8 @@ body {
 }
 
 
+
+
 /*
  * Header
  */
@@ -36,6 +38,8 @@ body {
 #header h1 {
   color: yellow;
 }
+
+
 
 
 /*
@@ -105,15 +109,19 @@ body {
   color: blue;
 }
 
+
+
+
 /*
  * Carousel
  */
 .carousel-control {
-    z-index: 20;
+    z-index: 40;
 }
 
+
 .order-jumbotron {
-  z-index: 10;        /* yield to 'carousel-control' */
+  z-index: 20;        /* yield to 'carousel-control' */
   position: absolute;
   top: 30%;
   background: transparent;

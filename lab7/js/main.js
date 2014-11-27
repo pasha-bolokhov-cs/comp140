@@ -7,7 +7,7 @@
 /**
  * Main AngularJS Web Application
  */
-var app = angular.module('webApp', ['ui.bootstrap', 'ngRoute', 'mapsApp', 'formApp']);
+var app = angular.module('webApp', ['ui.bootstrap', 'ngRoute', 'mapsApp']);
 
 
 /**
@@ -37,7 +37,8 @@ app.controller('PageCtrl', function ($scope, $modal /* also: $location, $http */
 	$scope.openOrderModal = function() {
 	    console.log("openOrderModal(): on enter");
 	    var modal = $modal.open({
-		    templateUrl: 'partials/order.html'
+		    templateUrl: 'partials/order.html',
+		    controller: 'costController'
 		});
 	}
 
@@ -121,9 +122,15 @@ mapsApp.config(function(uiGmapGoogleMapApiProvider) {
 /*
  * Order Form application
  */
-var formApp = angular.module("formApp", []);
+app.controller("costController", function($scope, $modalInstance, $http) {
 
-formApp.controller("costController", function($scope, $http) {
+	console.log("costController: on enter");
+
+	$scope.orderTabClick = function(page) {
+	    console.log("orderTabClick: got page = ", page);
+	    currentPage = page;
+	    $scope.$apply();
+	};
 
 	/* initialize the price table */
 	$scope.priceTable = {
@@ -187,6 +194,8 @@ formApp.controller("costController", function($scope, $http) {
 
 	/* submit the form */
 	$scope.submitForm = function() {
+	    console.log("submitForm(): on enter");
+
 	    $http.post("php/submit.php", $scope.order)
 	    .success(function(data) {
 		    if (data["success"] == 0) {
@@ -204,6 +213,11 @@ formApp.controller("costController", function($scope, $http) {
             /* need to show the status of request in either case */
             $scope.showAlerts = true;
 	}
+
+	/* cancel */
+	$scope.cancel = function() {
+	    $modalInstance.dismiss('cancel');
+	};
 
 	/* initialize */
 	$scope.reset(true);
