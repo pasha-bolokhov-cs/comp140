@@ -136,7 +136,8 @@ app.controller("costController", function($scope, $modalInstance, $http) {
 
 	console.log("costController: on enter");
 
-	$scope.orderTabClick = function(page) {
+	$scope.switchPage = function(page) {
+	    console.log("switchPage: asked page ", page);
 	    $scope.currentPage = page;
 	};
 
@@ -173,6 +174,9 @@ app.controller("costController", function($scope, $modalInstance, $http) {
 	    if (removeAlerts) {
 		$scope.showAlerts = false;
 	    }
+
+	    /* return to the first page */
+	    $scope.currentPage = 1;
 	};
 
 	/* calculates the cost */
@@ -232,5 +236,4 @@ app.controller("costController", function($scope, $modalInstance, $http) {
 
 	/* pagination */
 	$scope.numPages = 3;
-	$scope.currentPage = 1;
     });
