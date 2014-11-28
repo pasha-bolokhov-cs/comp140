@@ -37,7 +37,7 @@ app.controller('PageController', function ($scope, $modal /* also: $location, $h
 	$scope.openOrderModal = function() {
 	    console.log("openOrderModal: on enter");
 	    var modal = $modal.open({
-		    templateUrl: 'partials/order.html',
+		    templateUrl: 'order.html.script',
 		    controller: 'costController'
 		});
 	}
