@@ -136,20 +136,30 @@ app.controller("costController", function($scope, $modalInstance, $http) {
 
 	console.log("costController: on enter");
 
+	/*
+	 * Function switching to a specific page
+	 */
 	$scope.switchPage = function(page) {
 	    console.log("switchPage: asked page ", page);
 	    $scope.currentPage = page;
 	};
 
-	/* initialize the price table */
-	$scope.priceTable = {
-	    "california": { "six": 5.0, "eight": 7.0,  "ten": 10.0 },
-	    "salmon":     { "six": 7.0, "eight": 10.0, "ten": 12.0 },
-	    "calamari":   { "six": 9.0, "eight": 12.0, "ten": 14.0 }
-	};
+	/*
+	 * Function that determines if enough data has been entered
+	 * to switch to a specific page
+	 */
+	$scope.pageDisabled = function(page) {
+	    switch (page) {
+	    case 2:
+	    return !$scope.order.flavour;
 
-	/* Minute step for Time Picker */
-	$scope.mstep = 15;
+	    case 3:
+	    return !($scope.order.flavour && $scope.order.type);
+	    
+	    default:
+	    return false;
+	    }
+	};
 
 	/* clears all data */
 	$scope.reset = function(removeAlerts) {
@@ -230,6 +240,21 @@ app.controller("costController", function($scope, $modalInstance, $http) {
 	$scope.cancel = function() {
 	    $modalInstance.dismiss('cancel');
 	};
+
+
+	/*
+	 * Perform initializations
+	 */
+
+	/* initialize the price table */
+	$scope.priceTable = {
+	    "california": { "six": 5.0, "eight": 7.0,  "ten": 10.0 },
+	    "salmon":     { "six": 7.0, "eight": 10.0, "ten": 12.0 },
+	    "calamari":   { "six": 9.0, "eight": 12.0, "ten": 14.0 }
+	};
+
+	/* Minute step for Time Picker */
+	$scope.mstep = 15;
 
 	/* initialize */
 	$scope.reset(true);

@@ -1,292 +1,304 @@
 <script type="text/ng-template" id="order.html.script">
+
+
   <div class="modal-body">
     <div class="container-fluid">
-    
-    
+      
+      
       <!-- transaction status -->
       <div class="row">
         <div class="col-xs-12" ng-show="!showAlerts"><!-- place holder when no error-->
           <alert style="visibility: hidden;">
-    	PLACEHOLDER CONTENT - SHOULD NOT BE VISIBLE
+    	    PLACEHOLDER CONTENT - SHOULD NOT BE VISIBLE
           </alert>
         </div>
         <alert class="col-xs-12 col-md-8 col-md-offset-2 text-center" type="danger" ng-show="showAlerts && order.error"
-        	   close="showAlerts = false;">{{ order.error }}</alert>
+               close="showAlerts = false;">{{ order.error }}</alert>
         <alert class="col-xs-12 col-md-8 col-md-offset-2 text-center" type="success" ng-show="showAlerts && !order.error"
-        	   close="showAlerts = false;">
+               close="showAlerts = false;">
           Order processed. Your receipt number: <a href="php/orders.txt">{{ receipt }}</a>.
         </alert>
       </div>
-    
-    
+      
+      
       <!-- the row of the form -->
       <div class="row">
         <form novalidate class="orderform col-xs-12" name="orderform" id="orderform"
               ng-submit="submitForm()">
           <div class="row">
-    
-          <!------------------->
-          <!--               -->
-          <!-- Order details -->
-          <!--               -->
-          <!------------------->
-    
-    	<!-- ******** --->
-    	<!--  Page 1  --->
-    	<!-- ******** --->
-    	<tabset class="col-xs-12">
-            <tab heading="Flavour" active="currentPage == 1" select="switchPage(1);">
-    	    <br>
-            
-    	    <!-- select serving -->
-              <fieldset>
-                <legend>Select Serving</legend>
-        	      <div class="row">
-        		<div class="col-xs-5 col-md-4">
-        		  <select name="serving" id="serving" class="form-control" ng-model="order.serving">
-                        <option value="six" selected=selected>six-pack</option>
-                        <option value="eight">eight-pack</option>
-                        <option value="ten">ten-pack</option>
-        		  </select>
-        		</div>
-        	      </div>
-              </fieldset>
-              <br/>
-    	  
-              <!-- select the flavour -->
-              <fieldset>
-                <legend>Flavour of Sushi</legend>
-        	    <div class="row">
-                  <div class="col-xs-12 col-md-4 flavour">
-        		<div class="radio">
-                      <label for="california" class="control-label">
-                        <input type="radio" name="flavour" ng-model="order.flavour" value="california" id="california" required>
-        		    California Roll
-        		  </label>
-        		</div>
-        	      </div>
-                  <div class="col-xs-12 col-md-4">
-        		<div class="radio">
-                      <label for="salmon" class="control-label">
-                        <input type="radio" name="flavour" ng-model="order.flavour" value="salmon" id="salmon" required>
-        		    Spicy Salmon Roll
-        		  </label>
-        		</div>
-        	      </div>
-                  <div class="col-xs-12 col-md-4">
-        		<div class="radio">
-                      <label for="salmon" class="control-label">
-                        <input type="radio" name="flavour" ng-model="order.flavour" value="calamari" id="calamari" required>
-        		    Calamari Roll
-        		  </label>
-        		</div>
-        	      </div>
-                </div>
-              </fieldset>
-              <br/>	        
-    
-              <!-- select a spice -->
-              <fieldset>
-                <legend>Select a spice</legend>
-        	    <div class="row">
-        	      <div class="col-xs-12 col-md-4">
-        		<div class="checkbox">
-                      <label for="soy">
-                        <input type="checkbox" name="spice[]" ng-model="order.spice.soy" value="soy" id="soy">
-        		    Soy Sauce
-        		  </label>
-                    </div>
-        	      </div>
-        	      <div class="col-xs-12 col-md-4">
-        		<div class="checkbox">
-                      <label for="ginger">
-                        <input type="checkbox" name="spice[]" ng-model="order.spice.ginger" value="ginger" id="ginger">
-        		    Ginger
-        		  </label>
-        		</div>
-        	      </div>
-        	      <div class="col-xs-12 col-md-4">
-        		<div class="checkbox">
-                      <label for="wasabi">
-                        <input type="checkbox" name="spice[]" ng-model="order.spice.wasabi" value="wasabi" id="wasabi">
-        		    Wasabi
-        		  </label>
-        		</div>
-        	      </div>
+	    
+            <!------------------->
+            <!--               -->
+            <!-- Order details -->
+            <!--               -->
+            <!------------------->
+	    
+    	    <!-- ******** --->
+    	    <!--  Page 1  --->
+    	    <!-- ******** --->
+    	    <tabset class="col-xs-12">
+              <tab heading="Flavour" active="currentPage == 1" select="switchPage(1);">
+    		<br>
+		
+    		<!-- select serving -->
+		<fieldset>
+		  <legend>Select Serving</legend>
+		  <div class="row">
+        	    <div class="col-xs-5 col-md-4">
+        	      <select name="serving" id="serving" class="form-control" ng-model="order.serving">
+			<option value="six" selected=selected>six-pack</option>
+			<option value="eight">eight-pack</option>
+			<option value="ten">ten-pack</option>
+        	      </select>
         	    </div>
-        	    <div class="row">
-        	      <div class="col-xs-12 col-md-4">
-        		<div class="checkbox">
-                      <label for="hot">
-                        <input type="checkbox" name="spice[]" ng-model="order.spice.hot" value="hot" id="hot">
-        		    Hot Sauce
-        		  </label>
-        		</div>
-        	      </div>
-        	      <div class="col-xs-12 col-md-4">
-        		<div class="checkbox">
-                      <label for="mayo">
-                        <input type="checkbox" name="spice[]" ng-model="order.spice.mayo" value="mayo" id="mayo">
-        		    Spicy Mayo
-        		  </label>
-        		</div>
-        	      </div>
-        	    </div>
-              </fieldset>
-              <br/>	        
-    	</tab>
-    
-    
-    	<!-- ******** --->
-    	<!--  Page 2  --->
-    	<!-- ******** --->
-            <tab heading="Pick-up" active="currentPage == 2" select="switchPage(2);" disabled="!order.flavour">
-    	    <br>
-    
-        	    <!-- quantity -->
-              <fieldset>
-                <legend>Quantity</legend>
-        	    <div class="col-xs-4 col-md-2">
-                  <input type="number" id="quantity" name="quantity" ng-model="order.quantity"
-        		     value="1" min="1" max="20" class="form-control" required>
-                </div>
-              </fieldset>
-              <br/>	        
-    	  
-              <!-- order type -->
-              <fieldset>
-                <legend>Select order type</legend>
-        	    <div class="col-xs-12 col-sm-4">
+		  </div>
+		</fieldset>
+		<br/>
+    		
+		<!-- select the flavour -->
+		<fieldset>
+		  <legend>Flavour of Sushi</legend>
+		  <div class="row">
+                    <div class="col-xs-12 col-md-4 flavour">
         	      <div class="radio">
-        		<label class="control-label">
-        		  <input type="radio" name="type" value="pickup" id="pickup" ng-model="order.type" required>
-        		  Pick up
+			<label for="california" class="control-label">
+			  <input type="radio" name="flavour" ng-model="order.flavour" value="california" id="california" required>
+        		  California Roll
         		</label>
         	      </div>
         	    </div>
-        	    <div class="col-xs-12 col-sm-4">
+                    <div class="col-xs-12 col-md-4">
         	      <div class="radio">
-        		<label class="control-label">
-        		  <input type="radio" name="type" value="delivery" id="delivery" ng-model="order.type" required>
-        		  Delivery
+			<label for="salmon" class="control-label">
+			  <input type="radio" name="flavour" ng-model="order.flavour" value="salmon" id="salmon" required>
+        		  Spicy Salmon Roll
         		</label>
         	      </div>
         	    </div>
-              </fieldset>
-    
-    	  <!-- delivery time -->
-    	  <br>
-    	  <fieldset>
-    	    <legend>Choose delivery time</legend>
-    	    <div class="col-xs-12 col-sm-4">
-    	      <timepicker ng-model="order.pickupTime" minute-step="mstep"
-    			  show-meridian="true" readonly-input="true"></timepicker>
-    	    </div>
-    	  </fieldset>
-              <br/>
-            </tab>
-          
-        
-        	<!----------------------------->
-    	<!--                         -->
-        	<!-- Credit Card information -->
-    	<!--                         -->
-        	<!----------------------------->
-    
-    	<!-- ******** --->
-    	<!--  Page 3  --->
-    	<!-- ******** --->
-            <tab heading="Payment" active="currentPage == 3" select="switchPage(3);" disabled="!(order.flavour && order.type)">
-  	    <br>
-  
-              <fieldset>
-        	      <legend>Payment details</legend>
-        	      <!-- fist and last name -->
-                  <input type="text" name="firstname" class="form-control" placeholder="Your First Name" ng-model="order.firstname" required>
-                  <br/>
-                  <br/>
-                  <input type="text" name="lastname" class="form-control" placeholder="Last Name" ng-model="order.lastname" required>
-                  <br/>
-                  <br/>
-        	      <!-- phone number -->
-                  <input type="tel" name="phone" ng-model="order.phone" class="form-control" ng-pattern="/^\+?[\d-]*\d$/"
-                         placeholder="Phone number" required>
-        	      <span class="error" ng-show="orderform.phone.$error.pattern && orderform.phone.$dirty">
-        	        <small>Must be a phone number</small>
-        	      </span>
-                  <br/>
-                  <br/>
-        	      <!-- credit card number -->
-                  <input type="text" name="credit" ng-model="order.credit" class="form-control" ng-pattern="/^[\d-]+$/"
-                         placeholder="Credit Card" required>
-        	      <span class="error" ng-show="orderform.credit.$error.pattern && orderform.credit.$dirty">
-        	        <small>Only digits or dashes allowed</small>
-        	      </span>
-                  <br/>
-                  <br/>
-        	      <!-- credit card expiry month and year -->
-        	      <div class="col-xs-4">
-                    <input type="text" name="expirym" ng-model="order.expirym" class="form-control"
-                           size="2" maxlength="2" placeholder="MM" ng-pattern="/^\d\d?$/" title="Expiry Month" required>
+                    <div class="col-xs-12 col-md-4">
+        	      <div class="radio">
+			<label for="salmon" class="control-label">
+			  <input type="radio" name="flavour" ng-model="order.flavour" value="calamari" id="calamari" required>
+        		  Calamari Roll
+        		</label>
         	      </div>
-        	      <div class="error col-xs-2" ng-show="orderform.expirym.$error.pattern && orderform.expirym.$dirty">
-        	        <small>Two digits</small>
+        	    </div>
+		  </div>
+		</fieldset>
+		<br/>	        
+		
+		<!-- select a spice -->
+		<fieldset>
+		  <legend>Select a spice</legend>
+		  <div class="row">
+        	    <div class="col-xs-12 col-md-4">
+        	      <div class="checkbox">
+			<label for="soy">
+			  <input type="checkbox" name="spice[]" ng-model="order.spice.soy" value="soy" id="soy">
+        		  Soy Sauce
+        		</label>
+                      </div>
+        	    </div>
+        	    <div class="col-xs-12 col-md-4">
+        	      <div class="checkbox">
+			<label for="ginger">
+			  <input type="checkbox" name="spice[]" ng-model="order.spice.ginger" value="ginger" id="ginger">
+        		  Ginger
+        		</label>
         	      </div>
-        	      <!-- show separating padding only if there is no error -->
-        	      <div class="col-xs-2" ng-show="!(orderform.expirym.$error.pattern && orderform.expirym.$dirty)"></div>
-        	      <div class="col-xs-4">
-                    <input type="text" name="expiryy" ng-model="order.expiryy" class="form-control"
-                           size="2" maxlength="2" placeholder="YY" ng-pattern="/^\d\d?$/" title="Expiry Year" required>
+        	    </div>
+        	    <div class="col-xs-12 col-md-4">
+        	      <div class="checkbox">
+			<label for="wasabi">
+			  <input type="checkbox" name="spice[]" ng-model="order.spice.wasabi" value="wasabi" id="wasabi">
+        		  Wasabi
+        		</label>
         	      </div>
-        	      <div class="error col-xs-2" ng-show="orderform.expiryy.$error.pattern && orderform.expiryy.$dirty">
-        	        <small>Two digits</small>
+        	    </div>
+		  </div>
+		  <div class="row">
+        	    <div class="col-xs-12 col-md-4">
+        	      <div class="checkbox">
+			<label for="hot">
+			  <input type="checkbox" name="spice[]" ng-model="order.spice.hot" value="hot" id="hot">
+        		  Hot Sauce
+        		</label>
         	      </div>
-        	      <br/>
-        	      <br/>
-        	      <br/>
-        	      <!-- total amount -->
-        	      <div class="col-xs-12">
-        	        <div class="row">
-        	          <p class="col-xs-6 lead">Sub-total:</p>
-        	          <p class="col-xs-2 lead text-right">{{ calculateTotal() }}</p>
-        	          <p class="col-xs-3 lead col-xs-offset-1">CAD</p>
-        	        </div>
+        	    </div>
+        	    <div class="col-xs-12 col-md-4">
+        	      <div class="checkbox">
+			<label for="mayo">
+			  <input type="checkbox" name="spice[]" ng-model="order.spice.mayo" value="mayo" id="mayo">
+        		  Spicy Mayo
+        		</label>
         	      </div>
-  	    </fieldset>
-            </tab>
-    	</tabset>
+        	    </div>
+		  </div>
+		</fieldset>
+		<br/>	        
+    	      </tab>
+	      
+	      
+    	      <!-- ******** --->
+    	      <!--  Page 2  --->
+    	      <!-- ******** --->
+              <tab heading="Pick-up" active="currentPage == 2" select="switchPage(2);" disabled="pageDisabled(2);">
+    		<br>
+		
+		<!-- quantity -->
+		<fieldset>
+		  <legend>Quantity</legend>
+		  <div class="col-xs-4 col-md-2">
+		    <input type="number" id="quantity" name="quantity" ng-model="order.quantity"
+        		   value="1" min="1" max="20" class="form-control" required>
+		  </div>
+		</fieldset>
+		<br/>	        
+    		
+		<!-- order type -->
+		<fieldset>
+		  <legend>Select order type</legend>
+		  <div class="col-xs-12 col-sm-4">
+		    <div class="radio">
+        	      <label class="control-label">
+        		<input type="radio" name="type" value="pickup" id="pickup" ng-model="order.type" required>
+        		Pick up
+        	      </label>
+		    </div>
+		  </div>
+		  <div class="col-xs-12 col-sm-4">
+		    <div class="radio">
+        	      <label class="control-label">
+        		<input type="radio" name="type" value="delivery" id="delivery" ng-model="order.type" required>
+        		Delivery
+        	      </label>
+		    </div>
+		  </div>
+		</fieldset>
+		
+    		<!-- delivery time -->
+    		<br>
+    		<fieldset>
+    		  <legend>Choose delivery time</legend>
+    		  <div class="col-xs-12 col-sm-4">
+    		    <timepicker ng-model="order.pickupTime" minute-step="mstep"
+    				show-meridian="true" readonly-input="true"></timepicker>
+    		  </div>
+    		</fieldset>
+		<br/>
+              </tab>
+              
+              
+              <!----------------------------->
+    	      <!--                         -->
+              <!-- Credit Card information -->
+    	      <!--                         -->
+              <!----------------------------->
+	      
+    	      <!-- ******** --->
+    	      <!--  Page 3  --->
+    	      <!-- ******** --->
+              <tab heading="Payment" active="currentPage == 3" select="switchPage(3);" disabled="pageDisabled(3);">
+  		<br>
+		
+		<fieldset>
+		  <legend>Payment details</legend>
+		  <!-- fist and last name -->
+		  <input type="text" name="firstname" class="form-control" placeholder="Your First Name" ng-model="order.firstname" required>
+		  <br/>
+		  <br/>
+		  <input type="text" name="lastname" class="form-control" placeholder="Last Name" ng-model="order.lastname" required>
+		  <br/>
+		  <br/>
+		  <!-- phone number -->
+		  <input type="tel" name="phone" ng-model="order.phone" class="form-control" ng-pattern="/^\+?[\d-]*\d$/"
+			 placeholder="Phone number" required>
+		  <span class="error" ng-show="orderform.phone.$error.pattern && orderform.phone.$dirty">
+		    <small>Must be a phone number</small>
+		  </span>
+		  <br/>
+		  <br/>
+		  <!-- credit card number -->
+		  <input type="text" name="credit" ng-model="order.credit" class="form-control" ng-pattern="/^[\d-]+$/"
+			 placeholder="Credit Card" required>
+		  <span class="error" ng-show="orderform.credit.$error.pattern && orderform.credit.$dirty">
+		    <small>Only digits or dashes allowed</small>
+		  </span>
+		  <br/>
+		  <br/>
+		  <!-- credit card expiry month and year -->
+		  <div class="col-xs-4">
+		    <input type="text" name="expirym" ng-model="order.expirym" class="form-control"
+			   size="2" maxlength="2" placeholder="MM" ng-pattern="/^\d\d?$/" title="Expiry Month" required>
+		  </div>
+		  <div class="error col-xs-2" ng-show="orderform.expirym.$error.pattern && orderform.expirym.$dirty">
+		    <small>Two digits</small>
+		  </div>
+		  <!-- show separating padding only if there is no error -->
+		  <div class="col-xs-2" ng-show="!(orderform.expirym.$error.pattern && orderform.expirym.$dirty)"></div>
+		  <div class="col-xs-4">
+		    <input type="text" name="expiryy" ng-model="order.expiryy" class="form-control"
+			   size="2" maxlength="2" placeholder="YY" ng-pattern="/^\d\d?$/" title="Expiry Year" required>
+		  </div>
+		  <div class="error col-xs-2" ng-show="orderform.expiryy.$error.pattern && orderform.expiryy.$dirty">
+		    <small>Two digits</small>
+		  </div>
+		  <br/>
+		  <br/>
+		  <br/>
+		  <!-- total amount -->
+		  <div class="col-xs-12">
+		    <div class="row">
+        	      <p class="col-xs-6 lead">Sub-total:</p>
+        	      <p class="col-xs-2 lead text-right">{{ calculateTotal() }}</p>
+        	      <p class="col-xs-3 lead col-xs-offset-1">CAD</p>
+		    </div>
+		  </div>
+  		</fieldset>
+              </tab>
+    	    </tabset>
           </div>
         </form>
       </div>
-    
+      
       <!-- pagination buttons -->
       <div class="row">
         <div class="col-xs-12">
           <pager align="true" num-pages="numPages" ng-model="currentPage" total-items="30"></pager>
         </div>
-    
+      </div>
+    </div><!-- container-fluid -->
+  </div><!-- modal-body-->
+  
+  
+  <div class="modal-footer">
+    <div class="container-fluid">
+      
+      <div class="row">
         <!-- submit and reset buttons -->
         <div class="col-xs-12">
           <div class="row">
-        	<div class="col-xs-12 col-md-4">
+            <div class="col-xs-12 col-md-4">
               <button type="submit" class="btn btn-primary text-left"
-        		  ng-disabled="orderform.$invalid" ng-click="submitForm()">
-  	      <span class="glyphicon glyphicon-ok-sign"></span>&nbsp;place order
-  	    </button>
+        	      ng-disabled="orderform.$invalid" ng-click="submitForm()">
+  		<span class="glyphicon glyphicon-ok-sign"></span>&nbsp;place order
+  	      </button>
             </div>
-        	<div class="visible-xs visible-sm">
-        	  <br/><br/>
-        	</div>
+            <div class="visible-xs visible-sm">
+              <br/><br/>
+            </div>
             <div class="col-xs-12 col-md-4 text-center">
               <button type="reset" class="btn btn-warning" ng-click="reset(true)">clear form</button>
             </div>
-    	<div class="col-xs-12 col-md-4 text-right">
-    	  <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
-    	</div>
+    	    <div class="col-xs-12 col-md-4 text-right">
+    	      <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
+    	    </div>
           </div>
         </div>
-      </div><!-- pagination row -->
-    
+      </div><!-- row -->
+      
     </div><!-- container-fluid -->
-  </div><!-- modal-body-->
+  </div><!-- model-footer -->
+  
+  
 </script>

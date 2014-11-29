@@ -1,7 +1,11 @@
-/*
- * theme.css - Pavel A. Bolokhov
- */
+/************************************************************
+ *             theme.css - Pavel A. Bolokhov                *
+ ************************************************************/
 
+/* 
+ * Angular UI suggestion to fix the pointer
+ */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
 body {
   background: linear-gradient(to right, salmon, orchid);
