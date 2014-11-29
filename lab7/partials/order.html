@@ -37,7 +37,7 @@
     	    <!--  Page 1  --->
     	    <!-- ******** --->
     	    <tabset class="col-xs-12">
-              <tab heading="Flavour" active="currentPage == 1" select="switchPage(1);">
+              <tab heading="Flavour" active="currentPage == 1" ng-click="switchPage(1);">
     		<br>
 		
     		<!-- select serving -->
@@ -142,7 +142,7 @@
     	      <!-- ******** --->
     	      <!--  Page 2  --->
     	      <!-- ******** --->
-              <tab heading="Pick-up" active="currentPage == 2" select="switchPage(2);" disabled="pageDisabled(2);">
+              <tab heading="Pick-up" active="currentPage == 2" ng-click="switchPage(2)" disabled="pageDisabled(2);">
     		<br>
 		
 		<!-- quantity -->
@@ -198,7 +198,7 @@
     	      <!-- ******** --->
     	      <!--  Page 3  --->
     	      <!-- ******** --->
-              <tab heading="Payment" active="currentPage == 3" select="switchPage(3);" disabled="pageDisabled(3);">
+              <tab heading="Payment" active="currentPage == 3" ng-click="switchPage(3)" disabled="pageDisabled(3);">
   		<br>
 		
 		<fieldset>
@@ -262,24 +262,31 @@
       </div>
       
       <!-- pagination buttons -->
-      <div class="row">
-        <div class="col-xs-12">
-          <pager align="true" num-pages="numPages" ng-model="currentPage" total-items="30"></pager>
-        </div>
-      </div>
+      <nav class="row">
+        <ul class="pager col-xs-12">
+	  <!-- "Prev" button is always enabled, but not shown on the first page -->
+	  <li class="previous pull-left" ng-click="switchPage(currentPage - 1)" ng-show="currentPage > 1">
+	    <a><span>&laquo; Prev</span></a>
+	  </li>
+	  <li class="next push-right" ng-class="{disabled: pageDisabled(currentPage + 1)}" 
+	      ng-click="switchPage(currentPage + 1)" ng-show="currentPage < 3">
+	    <a><span>Next &raquo;</span></a>
+	  </li>
+        </ul>
+      </nav>
+
     </div><!-- container-fluid -->
   </div><!-- modal-body-->
   
-  
+  <!-- submit and reset buttons -->
   <div class="modal-footer">
     <div class="container-fluid">
       
       <div class="row">
-        <!-- submit and reset buttons -->
         <div class="col-xs-12">
           <div class="row">
             <div class="col-xs-12 col-md-4">
-              <button type="submit" class="btn btn-primary text-left"
+              <button type="submit" class="btn btn-primary pull-left"
         	      ng-disabled="orderform.$invalid" ng-click="submitForm()">
   		<span class="glyphicon glyphicon-ok-sign"></span>&nbsp;place order
   	      </button>
@@ -290,7 +297,7 @@
             <div class="col-xs-12 col-md-4 text-center">
               <button type="reset" class="btn btn-warning" ng-click="reset(true)">clear form</button>
             </div>
-    	    <div class="col-xs-12 col-md-4 text-right">
+    	    <div class="col-xs-12 col-md-4 push-right">
     	      <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
     	    </div>
           </div>

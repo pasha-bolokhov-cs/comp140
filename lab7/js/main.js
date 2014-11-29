@@ -140,8 +140,9 @@ app.controller("costController", function($scope, $modalInstance, $http) {
 	 * Function switching to a specific page
 	 */
 	$scope.switchPage = function(page) {
-	    console.log("switchPage: asked page ", page);
-	    $scope.currentPage = page;
+	    if (!$scope.pageDisabled(page)) {
+		$scope.currentPage = page;
+	    }
 	};
 
 	/*
@@ -150,14 +151,18 @@ app.controller("costController", function($scope, $modalInstance, $http) {
 	 */
 	$scope.pageDisabled = function(page) {
 	    switch (page) {
+	    case 1:
+	    return false;
+
 	    case 2:
 	    return !$scope.order.flavour;
 
 	    case 3:
 	    return !($scope.order.flavour && $scope.order.type);
 	    
+	    /* convenient to return "disabled" to any other request */
 	    default:
-	    return false;
+	    return true;
 	    }
 	};
 
@@ -185,8 +190,8 @@ app.controller("costController", function($scope, $modalInstance, $http) {
 		$scope.showAlerts = false;
 	    }
 
-	    /* return to the first page */
-	    $scope.currentPage = 1;
+	    /* initialize the first page or return to the first page */
+	    $scope.switchPage(1);
 	};
 
 	/* calculates the cost */
@@ -258,7 +263,4 @@ app.controller("costController", function($scope, $modalInstance, $http) {
 
 	/* initialize */
 	$scope.reset(true);
-
-	/* pagination */
-	$scope.numPages = 3;
     });
