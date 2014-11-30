@@ -243,17 +243,6 @@
 		  <div class="error col-xs-2" ng-show="orderform.expiryy.$error.pattern && orderform.expiryy.$dirty">
 		    <small>Two digits</small>
 		  </div>
-		  <br/>
-		  <br/>
-		  <br/>
-		  <!-- total amount -->
-		  <div class="col-xs-12">
-		    <div class="row">
-        	      <p class="col-xs-6 lead">Sub-total:</p>
-        	      <p class="col-xs-2 lead text-right">{{ calculateTotal() }}</p>
-        	      <p class="col-xs-3 lead col-xs-offset-1">CAD</p>
-		    </div>
-		  </div>
   		</fieldset>
               </tab>
     	    </tabset>
@@ -281,6 +270,17 @@
   <!-- submit and reset buttons -->
   <div class="modal-footer">
     <div class="container-fluid">
+
+      <div class="row">
+	<!-- total amount -->
+	<div class="col-xs-12">
+	  <div class="row">
+            <p class="col-xs-4 pull-left lead text-left">Sub-total:</p>
+            <p class="col-xs-2 lead text-right">{{ calculateTotal() }}</p>
+            <p class="col-xs-3 lead text-left push-right">CAD</p>
+	  </div>
+	</div>
+      </div>
       
       <div class="row">
         <div class="col-xs-12">
