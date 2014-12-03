@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ledger>
+
+  <receipt>
+    <date>10/23/2014</date> 
+    <customer>116</customer> 
+    <sushi>california</sushi> 
+    <spices variety="wasabi"/> 
+    <spices variety="hot_sauce"/> 
+    <quantity>1</quantity> 
+    <amount>12.23</amount> 
+  </receipt> 
+  
+  <receipt>
+    <date>10/24/2014</date> 
+    <customer>112</customer> 
+    <sushi>calamari</sushi> 
+    <spices variety="wasabi"/> 
+    <quantity>1</quantity>
+    <amount>6.32</amount> 
+  </receipt> 
+  
+  <receipt> 
+    <date>10/24/2014</date> 
+    <customer>152</customer> 
+    <sushi>salmon</sushi> 
+    <spices variety="wasabi"/>
+    <quantity>2</quantity> 
+    <amount>16.30</amount> 
+  </receipt> 
+  
+  <receipt> 
+    <date>10/24/2014</date> 
+    <customer>122</customer> 
+    <sushi>california</sushi> 
+    <spices variety="ginger"/>
+    <spices variety="wasabi"/>
+    <quantity>1</quantity> 
+    <amount>10.22</amount> 
+  </receipt> 
+  
+  <receipt> 
+    <date>10/24/2014</date> 
+    <customer>130</customer> 
+    <sushi>calamari</sushi> 
+    <quantity>3</quantity> 
+    <amount>26.60</amount> 
+  </receipt> 
+  
+  <receipt> 
+    <date>10/25/2014</date> 
+    <customer>137</customer> 
+    <sushi>salmon</sushi> 
+    <quantity>2</quantity> 
+    <amount>12.64</amount> 
+  </receipt> 
+  
+  <receipt> 
+    <date>10/25/2014</date> 
+    <customer>132</customer> 
+    <sushi>salmon</sushi> 
+    <spices variety="wasabi"/>
+    <quantity>1</quantity> 
+    <amount>8.32</amount> 
+  </receipt> 
+  
+  <receipt> 
+    <date>10/25/2014</date> 
+    <customer>133</customer> 
+    <sushi>california</sushi> 
+    <spices variety="hot_sauce"/>
+    <spices variety="soy_sauce"/>
+    <spices variety="wasabi"/>
+    <quantity>1</quantity> 
+    <amount>11.22</amount> 
+  </receipt> 
+  
+  <receipt> 
+    <date>10/25/2014</date> 
+    <customer>131</customer> 
+    <sushi>calamari</sushi> 
+    <spices variety="ginger"/>
+    <quantity>1</quantity> 
+    <amount>13.60</amount> 
+  </receipt>
+
+  <receipt>
+    <date>10/26/2014</date>
+    <customer>136</customer>
+    <sushi>california</sushi>
+    <spices variety="ginger"/>
+    <quantity>2</quantity>
+    <amount>9.45></amount>
+  </receipt>
+
+</ledger>
