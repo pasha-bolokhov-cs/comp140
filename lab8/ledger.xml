@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ledger [
+  <!ELEMENT ledger   (receipt+)>
+  <!ELEMENT receipt  (date, customer, sushi, spices*, quantity, amount)>
+  <!ELEMENT date     (#PCDATA)>
+  <!ELEMENT customer (#PCDATA)>
+  <!ELEMENT sushi    (#PCDATA)>
+  <!ELEMENT spices   (#PCDATA)>
+  <!ATTLIST spices
+	    variety  (soy_sauce |
+	              ginger    |
+                      wasabi    |
+                      hot_sauce |
+                      spicy_mayo)
+	              "wasabi">
+  <!ELEMENT quantity (#PCDATA)>
+  <!ELEMENT amount   (#PCDATA)>
+]>
 
 <ledger>
 
