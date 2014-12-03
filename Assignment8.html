@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html"; charset="utf-8"/>
+    <meta name="author" content="Stephen/Julia"/><title>
+    Lab08</title><style type="text/css"><!--
+  .p, p { font-family: serif; font-weight: normal; font-size: 12pt; }
+ .s1 { color: #00F; font-family: serif; font-weight: normal; font-size: 12pt; }
+ .s2 { font-family: sans-serif; font-weight: normal; font-size: 12pt; }
+ .s4 { font-family: monospace; font-weight: normal; font-size: 12pt; }
+ .s5 { font-family: sans-serif; font-weight: normal; font-size: 11pt; }
+ .s6 { font-family: monospace; font-weight: normal; font-size: 10pt; }
+ .s7 { font-family: sans-serif; font-weight: normal; font-size: 10pt; }
+ .s8 { font-family: serif; font-weight: normal; font-size: 10pt; }
+ .s9 { color: #7F007F; font-family: serif; font-weight: normal; text-decoration: underline; font-size: 12pt; }
+  -->
+</style>
+</head>
+<body style="font-family: verdana, sans-serif;font-size: 12px;">
+<h2>Computer Science 140 - Lab 8</h2>
+<p>Due during the week of Dec 2-5, on your last lab day.</p>
+<h3>Purpose</h3>
+<p>Demonstrate basic understanding of XML and XSLT.</p>
+<h3>Overview</h3>
+<p>Create an XML file and an XSL transform file to format the XML data in a browser window. If you are having difficulty making progress with this lab, confirm you have the symbols entered correctly and completely, then contact the instructor.</p>
+<h4>If you use Google Chrome...</h4>
+<p>The Chrome browser does not support the parsing of XML so for this assignment you will only be able to see your parsed xml in the view source window of Chrome. Once you add in your XSL file you will be unable to see the formating in XSL, unless you install a Chrome extension that specifically does this. Google has done this for security purposes. I recommend using Firefox for this lab.</p>
+<h3>Resources</h3>
+<ul>
+<li><a href="/d2l/common/dialogs/quickLink/quickLink.d2l?ou=82152&amp;type=content&amp;rcode=Camosun-660742" target="_self">XML_LectureNotes</a>&nbsp;posted on D2L.</li>
+<li><a href="http://www.w3.org/XML">http://www.xml.com</a></li>
+</ul>
+<h3>Process</h3>
+<ol>
+<li>Within your <span class="s2">public_html</span> folder on your deepblue account create a new folder named <span class="s2">lab08</span>. For this lab if you use the Microsoft Internet Explorer (IE) browser, you may have to close the browser and reopen it to seeing XML/XSLT parsing errors.</li>
+<li>Download <a href="ledger.txt" target="_blank">ledger.txt</a>&nbsp;into the lab08 folder. This file contains a set of nine sample sale transactions for the Pizza Palace restaurant. The amounts in the file are arbitrary. Rename the file to <span class="s2">ledger.xml</span></li>
+<li>In the XML file define a root element named <span class="s4">&lt;ledger&gt;</span>. Add the required end tag for this root element.</li>
+<li>Within the <span class="s4">&lt;ledger&gt;</span> root element, create the following new <span class="s4">&lt;receipt&gt;</span> element as the last element in the list of receipt elements:<br /> <br /> <span class="s2">date: 10/26/2013<br /> customer: 136<br /> pizza: cheese<br /> quantity: 2<br /> topping: pineapple; amount: 9.45</span><br /><br /></li>
+<li>Validate the <span class="s2">ledger.xml</span> file by displaying it within a browser (Firefox isrecommended). If the browser displays parsing errors in the XML, if is is for example missing an end tag or an XML tag is mispelt, the browser will indicate this information. Fix any parsing validation errors before continuing.</li>
+<li>Create <span style="text-decoration: underline;">an internal DTD</span> for your XML document. Recall that the DTD information appears just after the XML declaration. Since we must have at least one receipt in the <span class="s2">&lt;ledger&gt;</span> element, we place a plus sign next to the receipt element to indicate that it can have several instances.<br /><img src="DTD.PNG" alt="DTD" title="DTD" /></li>
+<li>The next step is to modify the structure of the DTD. We want to define a set of valid attribute values for the topping element so that the only acceptable topping varieties are: green pepper, mushroom, pepperoni, cheese, pineapple (in any order). Any other variety used in the topping element will invalidate the XML. Why would you want to do this? To ensure that unexpected or incorrect data does not get stored. In order to complete this requirement and make the XML file valid, you will have to add in a validation rule in the DTD section of the XML file for the topping attribute called <q>variety</q>. <br />Just below the <span class="s2">&lt;!ELEMENT</span>&nbsp;topping&gt; line, add the lines:<br /><img src="Lab08_attr.png" alt="ATTLIST" title="ATTLIST" /></li>
+<li>
+<p>There should be a line already containing the <span class="s4">]&gt;</span> following this <span class="s2">ATTLIST</span> element. This tells the DTD that you have an attribute named "variety" associated with the topping element and its only acceptable value is one of the above list of toppings. The final entry <q>cheese</q> is the default.</p>
+</li>
+<li>Point your browser to <a class="s9" href="http://www.xmlvalidation.com/">http://www.xmlvalidation.com/</a> and validate your <span class="s2">ledger.xml</span> file (either as a local file , URL, or as text). If you receive a validation error or warning, you must fix your <span class="s2">ledger.xml</span> file. Confirm you have the symbols entered properly. XML does not care about the amount of white space between tokens, just so long as there is no space within the token. (e.g. &lt;&nbsp;!&nbsp;&nbsp;&nbsp;ELEMENT&nbsp;&nbsp;&nbsp;date&nbsp;&nbsp;(#PCDATA)&gt; )</li>
+<li>Test your file by removing any line containing one of the elements inside a <span class="s2">&lt;receipt&gt;</span> element. Save the file and then revalidate the file to confirm the process catches your intentional XML error. Restore the <span class="s2">ledger.xml</span> file back to its valid form.</li>
+<li>Create in the lab08 folder a new file called <span class="s2">ledger.xsl</span> file which will contain information about how we want to display your XML data in a browser.<br /> The first four lines of the <span class="s2">ledger.xsl</span> file are:<br /><img src="Lab08_xls_1.jpg" alt="XSL-1" title="XSL-1" /></li>
+<li><span style="font-family: serif; font-size: 12pt;">The second line indicates that this XML file is a stylesheet &ndash; the </span><span class="s2">xmlns</span><span style="font-family: serif; font-size: 12pt;"> (xml namespace) attribute provides namespace information (the prefix is xsl). The third line indicates that the stylesheet output is intended to be in HTML format. The fourth line shows a template element. This element matches specific XML document nodes (elements) in the attribute match. Since the match is </span><q style="font-family: serif; font-size: 12pt;">/</q><span style="font-family: serif; font-size: 12pt;">, we want to match all the elements in the xmls file.</span></li>
+<li>The next part of the stylesheet file is the start of the HTML we want to display. The first HTML lines in the stylesheet file which set up a table are shown as follows. The CSS style for the <span class="s2">&lt;tr&gt;</span>element is inline.
+<p><img src="Lab08_xls_2.jpg" alt="XSL-2" title="XSL-2" /></p>
+</li>
+<li>
+<p>Following that HTML code we need to provide XSLT code to loop through each receipt element in our ledger.</p>
+<p><img src="Lab08_xls_3.jpg" alt="XSL-3" title="XSL-3" /></p>
+<p>This is extracting the values of the <q>date</q>, <q>customer</q> and <q>topping</q> elements from the list of receipt elements. The <span class="s4">&lt;xsl:</span> you see is the prefix that was defined in the second line from above. The <span class="s2">&amp;#160;</span> is an XML entity representing the non-breaking space. In XML you cannot use the usual set of HTML entities as <span class="s2">&amp;nbsp;</span> or <span class="s2">&amp;lt;</span> etc. The <span class="s2">&lt;xsl:for-each</span> is somewhat similar to a loop structure in which each receipt iteration is acted upon.</p>
+<p>The <span class="s2">&lt;xsl:value-of select</span> is a means for the xslt to retrieve the value of an element of that name. This structure is building a row of lines in an HTML table.</p>
+</li>
+<li>End the stylesheet with the HTML end tags.
+<p><img src="Lab08_xls_4.jpg" alt="XSL-4" title="XSL-4" /></p>
+</li>
+<li>
+<p>Save your <span class="s2">ledger.xsl</span> file. Open your <span class="s2">ledger.xml</span> file and add this as line 2:</p>
+<p class="s5">&lt;?xml-stylesheet type="text/xsl" href="ledger.xsl"?&gt;</p>
+<p>This declaration tells the browser how to format this XML file using the associated xsl stylesheet file.</p>
+</li>
+<li>
+<p>Open the <span class="s2">ledger.xml</span> file in Firefox/IE and you should see a table of receipt data containing just the date, customer and topping. You may alter the colour shading specified to something else if you prefer.</p>
+</li>
+<li>The issue regarding how browsers display empty table cells appears in this example if you are using the Internet Explorer browser. Internet Explorer will show the blank topping entries as cells having no borders. The Firefox browser shows blank topping entries as cells having borders. To make the Internet Explorer browser treat empty table cells properly, you can place a non- breaking space character (the HTML entity <span class="s2">&amp;nbsp;</span> ) inside that empty table cell. XML does not permit use of HTML entities coded that way, so enter its decimal equivalent, <span class="s2">&amp;#160;</span> between the tags <span class="s5">&lt;td&gt;</span> and <span class="s5">&lt;xsl:for-each select="topping"&gt;&nbsp;</span><span style="font-family: serif; font-size: 12pt;">This will make the appearance of the table consistent for both browsers even if some of the table cells are empty.<br /><br /></span></li>
+<li>Edit the <span class="s2">ledger.xsl</span> file so that your table shows the missing receipt information <q>pizza</q> and <q>amount</q> in the last two columns.</li>
+<li>Validate this modified version of your <span class="s2">ledger.xml</span>.</li>
+<li>XSLT provides running totals. After the definition of the <span class="s2">&lt;td&gt; &lt;/td&gt;</span>element for the amount column, add the following lines of XSLT:<br />
+<p class="s5">&lt;xsl:variable name="total"&nbsp;<span style="font-size: 11pt;">select="(quantity*amount)"/&gt;</span></p>
+<p class="s5">&lt;td&gt;</p>
+<p class="s5">&lt;xsl:value-of select="$total" /&gt;</p>
+<p class="s5">&lt;/td&gt;</p>
+<p>This XSLT defines a variable named <span class="s2">total</span>, which will show the running total amounts in the rightmost column . Provide an appropriate column heading name for this new column as the last item in the first <span class="s2">t&lt;tr&gt;&lt;/tr&gt;</span> tags. When you preview the table in the browser, some of the total values will show more than two decimal places. This amount can be formatted using XSLT&rsquo;s <span class="s2">format-number</span> function as in:</p>
+<p><img src="format-number-function.PNG" alt="Format-total" title="Format-total" /></p>
+</li>
+<li>Modify one of the receipt element&rsquo; <span class="s2">topping</span> value so that it will not validate to confirm the DTD will check the topping lists. Then, restore the XML file back to its valid state.</li>
+<li>The last two columns would look better aligned right so that the decimal values all line up neatly. Add the required CSS <span class="s2">style</span> attribute to the two <span class="s2">&lt;td&gt;</span> tags to do this. (Hint: <span class="s2">text-align</span> property). Edit your XSL so that it resembles the following:<br /><img src="final-view.PNG" alt="Final-view" title="Final-view" /></li>
+<li>Complete the HTML display to show a heading <span class="s2">&lt;h2&gt;</span>&nbsp;containing appropriate text such as <q>Receipt Display by xx</q> with xx replaced by your name.</li>
+</ol>
+<h3>Hand In</h3>
+<p>Send your instructor an <a href="mailto:julia.hunerli30@online.camosun.ca">email message</a> with <q>Comp 140 Lab 8</q> as the email subject. <br />Within the mail body, enter the deepblue URL to your <span class="s2">ledger.xml</span> file. <br /> 5 marks &ndash; proper display of the original xml data using xsl<br /> 5 marks &ndash; display of the amount and total column</p>
+</body>
+</html>
