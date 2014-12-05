@@ -8,7 +8,6 @@
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
 body {
-  background: linear-gradient(to right, salmon, orchid);
 }
 
 
@@ -30,12 +29,6 @@ body {
  */
 #header{
   margin: 0;
-  background: linear-gradient(to right, pink, salmon, orchid);
-  background: -webkit-linear-gradient(left, pink, salmon, orchid); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, pink, salmon, orchid);     /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, pink, salmon, orchid);   /* For Firefox 3.6 to 15 */
-  filter: progid:DXImageTransform.Microsoft.gradient( 
-	startColorstr='pink', endColorstr='salmon', GradientType=0);
 }
 
 
@@ -93,7 +86,6 @@ body {
 .navbar {
   border-width: 0;
   border-radius: 0;
-  background: linear-gradient(to right, pink, salmon);
   margin-bottom: 0;    /* override Bootstrap */
 }
 
