@@ -1,0 +1,134 @@
+/************************************************************
+ *             theme.css - Pavel A. Bolokhov                *
+ ************************************************************/
+
+/* 
+ * Angular UI suggestion to fix the pointer
+ */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+body {
+  background: linear-gradient(to right, salmon, orchid);
+}
+
+
+#data {
+  padding: 2em;
+}
+
+
+#main-view {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+/*
+ * Header
+ */
+#header{
+  margin: 0;
+  background: linear-gradient(to right, pink, salmon, orchid);
+  background: -webkit-linear-gradient(left, pink, salmon, orchid); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, pink, salmon, orchid);     /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, pink, salmon, orchid);   /* For Firefox 3.6 to 15 */
+  filter: progid:DXImageTransform.Microsoft.gradient( 
+	startColorstr='pink', endColorstr='salmon', GradientType=0);
+}
+
+
+#header h1 {
+  color: yellow;
+}
+
+
+
+
+/*
+ * Google Maps
+ */
+#maps-panel {
+  padding: 0;
+}
+
+
+.custom-info-window {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  padding: 20px;
+  border: 1px solid white;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+  border-radius: 5px;
+  width: 200px;
+  margin-top: 15px;
+  margin-left: -130px;
+}
+
+
+.custom-info-window:after
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 15px 15px;
+    border-color: rgba(0,0,0,0.5) transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    top: -15px;
+    left: 118px;
+}
+
+
+.angular-google-map-container { 
+    height: 400px;
+}
+
+
+/*
+ * Navigation bar
+ */
+.navbar {
+  border-width: 0;
+  border-radius: 0;
+  background: linear-gradient(to right, pink, salmon);
+  margin-bottom: 0;    /* override Bootstrap */
+}
+
+
+.navbar a {
+  font-size: 1.4em; 
+  line-height: 2em;
+}
+
+
+.navbar div {
+  padding: 1em 0 1em 0;
+}
+
+
+.navbar a:visited {
+  color: blue;
+}
+
+
+
+
+/*
+ * Carousel
+ */
+.carousel-control {
+    z-index: 40;
+}
+
+
+.order-jumbotron {
+    z-index: 20;        /* yield to 'carousel-control' */
+    position: absolute;
+    top: 30%;
+    background: transparent;
+    color: white;
+    width: 100%;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+
+    <!-- Meta-Information -->
+    <title>Sushi Palace</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="text/html; IE=edge,chrome=1">
+    <meta name="description" content="Sushi Palace">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Vendor: Bootstrap Stylesheets http://getbootstrap.com -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="//rawgithub.com/mgcrea/angular-motion/master/dist/angular-motion.min.css">
+
+    <!-- Our Website CSS Styles -->
+    <link rel="stylesheet" href="css/theme.css">
+
+</head>
+<body ng-app="webApp">
+
+<!--[if lt IE 7]>
+  <p class="browsehappy">
+    You are using an <strong>outdated</strong> browser.
+    Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.
+  </p>
+<![endif]-->
+
+<!----------------------------------->
+<!----------- Our Website ----------->
+<!----------------------------------->
+<div class="container-fluid">
+
+  <!-- The header row -->
+  <ng-include src='"templates/header.html"'></ng-include>
+
+  <!-- The partial view -->
+  <div class="row">
+    <div class="col-xs-12" id="main-view" ng-view></div>
+  </div>
+
+  <!-- Optional footer row -->
+  <ng-include src='"templates/footer.html"'></div>
+</div>
+
+
+<!-- Vendor: Javascripts -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?libraries=weather,visualization&sensor=false&language=en&v=3.13"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<!-- Vendor: Angular, followed by our custom Javascripts -->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular-route.min.js"></script>
+
+<script src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
+<script src="js/lodash.min.js"></script>
+<script src="js/angular-google-maps.min.js"></script>
+
+<!-- Our Website Javascripts -->
+<script src="js/main.js"></script>
+<script src="js/jquery-cookie/src/jquery.cookie.js"></script>
+
+</body>
+</html>
