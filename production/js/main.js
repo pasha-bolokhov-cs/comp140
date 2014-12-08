@@ -35,10 +35,10 @@ app.controller('PageController', function ($scope, $modal /* also: $location, $h
 
 	/* function which opens the "Order Now" modal */
 	$scope.openOrderModal = function() {
-	    console.log("openOrderModal: on enter");
 	    var modal = $modal.open({
 		    templateUrl: 'order.html.script',
-		    controller: 'costController'
+		    controller: 'costController',
+                    backdrop: "static"
 		});
 	}
 
