@@ -1,6 +1,6 @@
 == Sushi Palace(TM)
 
 [.lead]
-A simple SPA site showcasing *AngularJS*, *Angular Route*, *Bootstrap*, *Bootstrap UI* frameworks
+A simple SPA site showcasing *AngularJS*, *Angular Route*, *Bootstrap* and *Bootstrap UI* frameworks
 
 Performed as part of Computer Science 140 course at Camosun College
